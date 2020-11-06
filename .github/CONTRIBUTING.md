@@ -35,4 +35,4 @@ From the root directory, generate libraries with this command:
 ./tools/gen.sh
 ```
 
-Observe the new files in `src/`.
+Observe the new files in the repo.
