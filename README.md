@@ -6,12 +6,22 @@ This repository contains types for CloudEvents issued by Google.
 
 - Ruby 2.4 (or higher)
 
-## Generate
+## Installation
 
-Generate libraries:
+Add this line to your application's Gemfile:
 
-```sh
-./gen.sh
+```ruby
+gem 'google_events'
 ```
 
-Observe the new files in `src/`.
+And then execute:
+
+```sh
+bundle install
+```
+
+Or install it yourself as:
+
+```sh
+gem install google_events
+```
