@@ -12,6 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-module GoogleEvents
-  VERSION = "0.1.0"
+require 'json'
+require 'dry-types'
+require 'dry-struct'
+
+module Types
+  include Dry::Types.module
+
+  Nil  = Strict::Nil
+  Hash = Strict::Hash
+end
+
+# The data within all Firebase Real Time Database reference events.
+class ReferenceEventData < Dry::Struct
+  attribute :data,  Types::Hash.meta(of: Types::Any).optional.optional
+  attribute :delta, Types::Hash.meta(of: Types::Any).optional.optional
 end
