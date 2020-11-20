@@ -26,3 +26,13 @@ information on using pull requests.
 
 This project follows [Google's Open Source Community
 Guidelines](https://opensource.google/conduct/).
+
+## Generate
+
+From the root directory, generate libraries with this command:
+
+```sh
+./tools/gen.sh
+```
+
+Observe the new files in the repo.
