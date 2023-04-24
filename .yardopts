@@ -3,6 +3,8 @@
 --markup markdown
 --markup-provider redcarpet
 --main=README.md
+--exclude _pb\.rb$
+
 ./lib/**/*.rb
 -
 README.md
