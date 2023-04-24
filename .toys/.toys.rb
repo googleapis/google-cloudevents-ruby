@@ -1,12 +1,12 @@
-#!/bin/bash
+# frozen_string_literal: true
 
-# Copyright 2020 Google LLC.
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+#     http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,15 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -e
+expand :clean, paths: :gitignore
 
-# Generate TS library from JSON Schemas
-qt \
---in=$(dirname $PWD)/google-cloudevents/jsonschema \
---out=$PWD \
---l=ruby
+expand :minitest, libs: ["lib", "test"], bundler: true
 
-# Move generated library into correct directory
-mkdir -p lib/google_events
-cp -a google/events/. lib/google_events
-rm -r google
+expand :rubocop, bundler: true
+
+expand :yardoc do |t|
+  t.generate_output_flag = true
+  t.fail_on_warning = true
+  t.fail_on_undocumented_objects = true
+  t.use_bundler
+end
+alias_tool :yard, :yardoc
+
+expand :gem_build
+
+expand :gem_build, name: "install", install_gem: true

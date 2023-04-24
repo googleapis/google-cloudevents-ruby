@@ -1,0 +1,9 @@
+--no-private
+--title=Google Events
+--markup markdown
+--markup-provider redcarpet
+--main=README.md
+./lib/**/*.rb
+-
+README.md
+CHANGELOG.md
