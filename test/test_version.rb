@@ -1,4 +1,6 @@
-# Copyright 2020 Google LLC
+# frozen_string_literal: true
+
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,19 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'json'
-require 'dry-types'
-require 'dry-struct'
+require "helper"
 
-module Types
-  include Dry::Types.module
+describe Google::Events::VERSION do
+  let(:version) { Google::Events::VERSION }
 
-  Nil  = Strict::Nil
-  Hash = Strict::Hash
-end
-
-# The data within all Firebase Real Time Database reference events.
-class ReferenceEventData < Dry::Struct
-  attribute :data,  Types::Hash.meta(of: Types::Any).optional.optional
-  attribute :delta, Types::Hash.meta(of: Types::Any).optional.optional
+  it "is a legal version" do
+    assert_instance_of String, version
+    assert version.frozen?
+    Gem::Version.new version
+  end
 end

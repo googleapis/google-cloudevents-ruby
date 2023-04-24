@@ -1,0 +1,27 @@
+inherit_gem:
+  google-style: google-style.yml
+
+AllCops:
+  Include:
+    - "**/*.rb"
+    - "Gemfile"
+    - "google-events.gemspec"
+
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - "test/**/test_*.rb"
+Metrics/BlockLength:
+  Exclude:
+    - "test/**/test_*.rb"
+    - "google-events.gemspec"
+Metrics/ClassLength:
+  Max: 200
+Metrics/ModuleLength:
+  Max: 200
+Naming/FileName:
+  Exclude:
+    - ".toys/**/*.rb"
+    - "lib/google-events.rb"
+Style/BlockDelimiters:
+  Exclude:
+    - "test/**/test_*.rb"

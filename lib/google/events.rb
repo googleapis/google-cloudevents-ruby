@@ -1,4 +1,6 @@
-# Copyright 2020 Google LLC
+# frozen_string_literal: true
+
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,20 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'json'
-require 'dry-types'
-require 'dry-struct'
+require "google/events/version"
 
-module Types
-  include Dry::Types.module
-
-  Hash   = Strict::Hash
-  String = Strict::String
-end
-
-# Scheduler job data.
-class SchedulerJobData < Dry::Struct
-
-  # The custom data the user specified when creating the scheduler source.
-  attribute :custom_data, Types::String.optional
+module Google
+  ##
+  # Namespace for Google event objects
+  #
+  module Events
+  end
 end

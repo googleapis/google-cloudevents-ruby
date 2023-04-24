@@ -6,7 +6,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+#     https://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,13 +14,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-source "https://rubygems.org"
-
-gemspec
-
-gem "google-style", "~> 1.26.3"
-gem "minitest", "~> 5.18"
-gem "minitest-focus", "~> 1.3"
-gem "minitest-rg", "~> 5.2"
-gem "redcarpet", "~> 3.6" unless ::RUBY_PLATFORM == "java"
-gem "yard", "~> 0.9.34"
+require "google/events"
