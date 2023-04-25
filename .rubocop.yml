@@ -3,9 +3,11 @@ inherit_gem:
 
 AllCops:
   Include:
-    - "**/*.rb"
+    - "lib/**/*.rb"
     - "Gemfile"
     - "google-events.gemspec"
+  Exclude:
+    - "lib/**/*_pb.rb"
 
 Lint/ConstantDefinitionInBlock:
   Exclude:

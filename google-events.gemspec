@@ -27,7 +27,7 @@ version = ::Google::Events::VERSION
 
   spec.summary = "Google CloudEvents types for Ruby"
   spec.description =
-    "Google CloudEvents types for Ruby"
+    "This library includes Google CloudEvents types for Ruby"
   spec.license = "Apache-2.0"
   spec.homepage = "https://github.com/googleapis/google-cloudevents-ruby"
 
@@ -37,6 +37,9 @@ version = ::Google::Events::VERSION
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = ">= 2.6.0"
+
+  spec.add_dependency "googleapis-common-protos-types", "~> 1.6"
+  spec.add_dependency "google-protobuf", "~> 3.22"
 
   if spec.respond_to? :metadata
     spec.metadata["source_code_uri"] = "https://github.com/googleapis/google-cloudevents-ruby"
