@@ -35,4 +35,4 @@ jobs:
             --fork --skip-labeling \
             --github-event-name=${{ github.event_name }} \
             ${{ github.event.inputs.args }} \
-            -- google-events:${{ github.event.inputs.version }}
+            -- .:${{ github.event.inputs.version }}
