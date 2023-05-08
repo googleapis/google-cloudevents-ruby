@@ -1,2 +1,6 @@
-releaseType: simple
+primaryBranch: main
+releaseType: ruby-yoshi
+bumpMinorPreMajor: true
+packageName: google-events
+monorepoTags: true
 handleGHRelease: true
