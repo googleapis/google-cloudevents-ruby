@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.3.0 (2023-06-13)
+
+#### Features
+
+* Added events for video/transcoder/v1 ([#32](https://github.com/googleapis/google-cloudevents-ruby/issues/32)) 
+* Uses binary protobuf definitions for better forward compatibility 
+
 ### 0.2.0 (2023-05-22)
 
 #### Features
