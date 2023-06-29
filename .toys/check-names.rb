@@ -170,7 +170,7 @@ def check_modules modules, dir
 end
 
 def output issues
-  if github_event_name == "pull_request" && !pr_number
+  if !pr_number && ["pull_request", "pull_request_target"].include?(github_event_name)
     payload = github_payload_json
     set :pr_number, payload["pull_request"]["number"] if payload
   end
