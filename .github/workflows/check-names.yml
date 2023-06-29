@@ -1,0 +1,37 @@
+name: "Check Names"
+
+on:
+  pull_request_target:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      head:
+        description: "Commit reference at which to run tests"
+        required: false
+      base:
+        description: "Commit reference from which to evaluate diffs"
+        required: false
+      flags:
+        description: "Extra flags to pass to toys check-names"
+        required: false
+
+jobs:
+  check-names:
+    if: ${{ github.repository == 'googleapis/google-cloudevents-ruby' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.YOSHI_APPROVER_TOKEN }}
+    steps:
+      - name: Install Ruby 3.2
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          gem install --no-document toys
+      - name: Run CI
+        run: |
+          toys check-names -v --github-event-name=${{ github.event_name }} --github-event-payload=${{ github.event_path }} ${{ github.event.inputs.flags }}
