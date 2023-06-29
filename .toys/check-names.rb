@@ -90,10 +90,10 @@ def interpret_github_event
     case github_event_name
     when "pull_request"
       logger.info "Getting commits from pull_request event"
-      [payload["pull_request"]["base"]["ref"]]
+      [payload["pull_request"]["base"]["sha"], nil]
     when "pull_request_target"
       logger.info "Getting commits from pull_request_target event"
-      [payload["pull_request"]["base"]["ref"], payload["pull_request"]["head"]["ref"]]
+      [payload["pull_request"]["base"]["sha"], payload["pull_request"]["head"]["sha"]]
     when "workflow_dispatch"
       logger.info "Getting inputs from workflow_dispatch event"
       [payload["inputs"]["base"], payload["inputs"]["head"]]
