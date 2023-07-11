@@ -4,7 +4,16 @@
 
 #### Features
 
-* Automated update of event classes ([#42](https://github.com/googleapis/google-cloudevents-ruby/issues/42)) 
+* Added events for alloydb/v1 ([#42](https://github.com/googleapis/google-cloudevents-ruby/issues/42))
+* Added events for datastore/v1
+* Added events for gkehub/v1
+* Added events for metastore/v1
+* Added events for networkconnectivity/v1
+* Added events for networkmanagement/v1
+* Added events for notebooks/v1
+* Added events for redis/v1
+* Added events for visionai/v1
+* Added events for vmmigration/v1
 
 ### 0.3.0 (2023-06-13)
 
