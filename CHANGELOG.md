@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.5.0 (2023-12-04)
+
+#### Features
+
+* Automated update of event classes ([#50](https://github.com/googleapis/google-cloudevents-ruby/issues/50)) 
+
 ### 0.4.0 (2023-07-11)
 
 #### Features
