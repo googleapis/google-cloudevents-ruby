@@ -36,7 +36,7 @@ version = ::Google::Events::VERSION
                ["LICENSE", ".yardopts"]
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 2.7.0"
 
   spec.add_dependency "googleapis-common-protos-types", "~> 1.6"
   spec.add_dependency "google-protobuf", "~> 3.22"
