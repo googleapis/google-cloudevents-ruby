@@ -8,32 +8,10 @@ require 'google/events/cloud/datastore/v1/data_pb'
 require 'google/events/cloudevent_pb'
 
 
-descriptor_data = "\n-google/events/cloud/datastore/v1/events.proto\x12 google.events.cloud.datastore.v1\x1a+google/events/cloud/datastore/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\xaa\x01\n\x12\x45ntityCreatedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:S\xb2\xf8\xd8,(google.cloud.datastore.entity.v1.created\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\"\xaa\x01\n\x12\x45ntityUpdatedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:S\xb2\xf8\xd8,(google.cloud.datastore.entity.v1.updated\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\"\xaa\x01\n\x12\x45ntityDeletedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:S\xb2\xf8\xd8,(google.cloud.datastore.entity.v1.deleted\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\"\xaa\x01\n\x12\x45ntityWrittenEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:S\xb2\xf8\xd8,(google.cloud.datastore.entity.v1.written\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntityB\xeb\x02\xaa\x02)Google.Events.Protobuf.Cloud.Datastore.V1\xca\x02 Google\\Events\\Cloud\\Datastore\\V1\xea\x02$Google::Events::Cloud::Datastore::V1\xba\xf8\xd8,\x0f\x43loud Firestore\xc2\xf8\xd8,R\n\x08\x64\x61tabase\x12\x46The Firestore database name. The default database name is \"(default)\".\xc2\xf8\xd8,T\n\tnamespace\x12GThe Firestore database namespace. The default namespace is \"(default)\".\xc2\xf8\xd8,,\n\x06\x65ntity\x12\"Pattern to match for the resource.b\x06proto3"
+descriptor_data = "\n-google/events/cloud/datastore/v1/events.proto\x12 google.events.cloud.datastore.v1\x1a+google/events/cloud/datastore/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\xaa\x01\n\x12\x45ntityCreatedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:S\xb2\xf8\xd8,(google.cloud.datastore.entity.v1.created\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\"\xaa\x01\n\x12\x45ntityUpdatedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:S\xb2\xf8\xd8,(google.cloud.datastore.entity.v1.updated\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\"\xaa\x01\n\x12\x45ntityDeletedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:S\xb2\xf8\xd8,(google.cloud.datastore.entity.v1.deleted\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\"\xaa\x01\n\x12\x45ntityWrittenEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:S\xb2\xf8\xd8,(google.cloud.datastore.entity.v1.written\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\"\xe1\x01\n!EntityCreatedEventWithAuthContext\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:{\xb2\xf8\xd8,8google.cloud.datastore.entity.v1.created.withAuthContext\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\xca\xf8\xd8,\x08\x61uthtype\xca\xf8\xd8,\x06\x61uthid\"\xe1\x01\n!EntityUpdatedEventWithAuthContext\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:{\xb2\xf8\xd8,8google.cloud.datastore.entity.v1.updated.withAuthContext\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\xca\xf8\xd8,\x08\x61uthtype\xca\xf8\xd8,\x06\x61uthid\"\xe1\x01\n!EntityDeletedEventWithAuthContext\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:{\xb2\xf8\xd8,8google.cloud.datastore.entity.v1.deleted.withAuthContext\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\xca\xf8\xd8,\x08\x61uthtype\xca\xf8\xd8,\x06\x61uthid\"\xe1\x01\n!EntityWrittenEventWithAuthContext\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.datastore.v1.EntityEventData:{\xb2\xf8\xd8,8google.cloud.datastore.entity.v1.written.withAuthContext\xca\xf8\xd8,\x08\x64\x61tabase\xca\xf8\xd8,\tnamespace\xca\xf8\xd8,\x06\x65ntity\xca\xf8\xd8,\x08\x61uthtype\xca\xf8\xd8,\x06\x61uthidB\xeb\x02\xaa\x02)Google.Events.Protobuf.Cloud.Datastore.V1\xca\x02 Google\\Events\\Cloud\\Datastore\\V1\xea\x02$Google::Events::Cloud::Datastore::V1\xba\xf8\xd8,\x0f\x43loud Firestore\xc2\xf8\xd8,R\n\x08\x64\x61tabase\x12\x46The Firestore database name. The default database name is \"(default)\".\xc2\xf8\xd8,T\n\tnamespace\x12GThe Firestore database namespace. The default namespace is \"(default)\".\xc2\xf8\xd8,,\n\x06\x65ntity\x12\"Pattern to match for the resource.b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.events.cloud.datastore.v1.EntityEventData", "google/events/cloud/datastore/v1/data.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events
@@ -44,6 +22,10 @@ module Google
           EntityUpdatedEvent = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.datastore.v1.EntityUpdatedEvent").msgclass
           EntityDeletedEvent = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.datastore.v1.EntityDeletedEvent").msgclass
           EntityWrittenEvent = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.datastore.v1.EntityWrittenEvent").msgclass
+          EntityCreatedEventWithAuthContext = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.datastore.v1.EntityCreatedEventWithAuthContext").msgclass
+          EntityUpdatedEventWithAuthContext = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.datastore.v1.EntityUpdatedEventWithAuthContext").msgclass
+          EntityDeletedEventWithAuthContext = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.datastore.v1.EntityDeletedEventWithAuthContext").msgclass
+          EntityWrittenEventWithAuthContext = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.datastore.v1.EntityWrittenEventWithAuthContext").msgclass
         end
       end
     end

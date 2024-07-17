@@ -10,29 +10,7 @@ require 'google/protobuf/timestamp_pb'
 descriptor_data = "\n8google/events/cloud/beyondcorp/appgateways/v1/data.proto\x12-google.events.cloud.beyondcorp.appgateways.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9e\x07\n\nAppGateway\x12\x0c\n\x04name\x18\x01 \x01(\t\x12/\n\x0b\x63reate_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12U\n\x06labels\x18\x04 \x03(\x0b\x32\x45.google.events.cloud.beyondcorp.appgateways.v1.AppGateway.LabelsEntry\x12\x14\n\x0c\x64isplay_name\x18\x05 \x01(\t\x12\x0b\n\x03uid\x18\x06 \x01(\t\x12L\n\x04type\x18\x07 \x01(\x0e\x32>.google.events.cloud.beyondcorp.appgateways.v1.AppGateway.Type\x12N\n\x05state\x18\x08 \x01(\x0e\x32?.google.events.cloud.beyondcorp.appgateways.v1.AppGateway.State\x12\x0b\n\x03uri\x18\t \x01(\t\x12l\n\x15\x61llocated_connections\x18\n \x03(\x0b\x32M.google.events.cloud.beyondcorp.appgateways.v1.AppGateway.AllocatedConnection\x12U\n\thost_type\x18\x0b \x01(\x0e\x32\x42.google.events.cloud.beyondcorp.appgateways.v1.AppGateway.HostType\x1a<\n\x13\x41llocatedConnection\x12\x0f\n\x07psc_uri\x18\x01 \x01(\t\x12\x14\n\x0cingress_port\x18\x02 \x01(\x05\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"+\n\x04Type\x12\x14\n\x10TYPE_UNSPECIFIED\x10\x00\x12\r\n\tTCP_PROXY\x10\x01\"_\n\x05State\x12\x15\n\x11STATE_UNSPECIFIED\x10\x00\x12\x0c\n\x08\x43REATING\x10\x01\x12\x0b\n\x07\x43REATED\x10\x02\x12\x0c\n\x08UPDATING\x10\x03\x12\x0c\n\x08\x44\x45LETING\x10\x04\x12\x08\n\x04\x44OWN\x10\x05\";\n\x08HostType\x12\x19\n\x15HOST_TYPE_UNSPECIFIED\x10\x00\x12\x14\n\x10GCP_REGIONAL_MIG\x10\x01\"r\n\x13\x41ppGatewayEventData\x12O\n\x07payload\x18\x01 \x01(\x0b\x32\x39.google.events.cloud.beyondcorp.appgateways.v1.AppGatewayH\x00\x88\x01\x01\x42\n\n\x08_payloadB\x9e\x01\xaa\x02\x36Google.Events.Protobuf.Cloud.BeyondCorp.AppGateways.V1\xca\x02-Google\\Events\\Cloud\\BeyondCorp\\AppGateways\\V1\xea\x02\x32Google::Events::Cloud::BeyondCorp::AppGateways::V1b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.protobuf.Timestamp", "google/protobuf/timestamp.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events
