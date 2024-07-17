@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+desc "Verify that event namespaces are consistent with client libraries"
+
 flag :all_files, "--all" do |f|
   f.desc "Check all event files instead of looking for changes"
 end
@@ -30,9 +32,6 @@ flag :head_commit, "--head=COMMIT" do |f|
 end
 flag :base_commit, "--base=COMMIT" do |f|
   f.desc "Ref or SHA of the base commit when analyzing changes. If omitted, uses uncommitted diffs."
-end
-flag :pr_number, "--pr-number=NUMBER" do |f|
-  f.desc "Number of the pull request to update"
 end
 
 require "json"
@@ -55,6 +54,7 @@ def run
   modules = find_modules files
   issues = check_modules modules, gcr_dir
   output issues
+  exit 1 unless issues.empty?
 end
 
 def find_files
@@ -170,24 +170,11 @@ def check_modules modules, dir
 end
 
 def output issues
-  if !pr_number && ["pull_request", "pull_request_target"].include?(github_event_name)
-    payload = github_payload_json
-    set :pr_number, payload["pull_request"]["number"] if payload
-  end
-  if pr_number
-    if issues.empty?
-      comments = ["No warnings detected by check-names.\n"]
-    else
-      comments = ["WARNINGS:\n\n"]
-      issues.each { |issue| comments << " *  #{issue}\n" }
-    end
-    exec ["gh", "pr", "comment", pr_number,
-          "--repo", "googleapis/google-cloudevents-ruby",
-          "--body", comments.join],
-         e: true
-    logger.info "Commented on pull request #{pr_number}"
+  if issues.empty?
+    puts "No naming issues", :green, :bold
   else
-    issues.each { |issue| puts issue, :bold }
+    puts "NAMING ISSUES FOUND:", :red, :bold
+    issues.each { |issue| puts issue, :red, :bold }
   end
 end
 
