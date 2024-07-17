@@ -10,29 +10,7 @@ require 'google/protobuf/timestamp_pb'
 descriptor_data = "\n(google/events/cloud/pubsub/v1/data.proto\x12\x1dgoogle.events.cloud.pubsub.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"k\n\x14MessagePublishedData\x12=\n\x07message\x18\x01 \x01(\x0b\x32,.google.events.cloud.pubsub.v1.PubsubMessage\x12\x14\n\x0csubscription\x18\x02 \x01(\t\"\xfe\x01\n\rPubsubMessage\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12P\n\nattributes\x18\x02 \x03(\x0b\x32<.google.events.cloud.pubsub.v1.PubsubMessage.AttributesEntry\x12\x12\n\nmessage_id\x18\x03 \x01(\t\x12\x30\n\x0cpublish_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x14\n\x0cordering_key\x18\x05 \x01(\t\x1a\x31\n\x0f\x41ttributesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42m\xaa\x02&Google.Events.Protobuf.Cloud.PubSub.V1\xca\x02\x1dGoogle\\Events\\Cloud\\PubSub\\V1\xea\x02!Google::Events::Cloud::PubSub::V1b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.protobuf.Timestamp", "google/protobuf/timestamp.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events

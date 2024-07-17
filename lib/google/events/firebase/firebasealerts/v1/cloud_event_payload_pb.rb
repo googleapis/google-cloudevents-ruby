@@ -11,30 +11,7 @@ require 'google/type/date_pb'
 descriptor_data = "\nBgoogle/events/firebase/firebasealerts/v1/cloud_event_payload.proto\x12(google.events.firebase.firebasealerts.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x16google/type/date.proto\"T\n\x10\x43rashlyticsIssue\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x10\n\x08subtitle\x18\x03 \x01(\t\x12\x13\n\x0b\x61pp_version\x18\x04 \x01(\t\"l\n\x1f\x43rashlyticsNewFatalIssuePayload\x12I\n\x05issue\x18\x01 \x01(\x0b\x32:.google.events.firebase.firebasealerts.v1.CrashlyticsIssue\"o\n\"CrashlyticsNewNonfatalIssuePayload\x12I\n\x05issue\x18\x01 \x01(\x0b\x32:.google.events.firebase.firebasealerts.v1.CrashlyticsIssue\"\xae\x01\n!CrashlyticsRegressionAlertPayload\x12\x0c\n\x04type\x18\x01 \x01(\t\x12I\n\x05issue\x18\x02 \x01(\x0b\x32:.google.events.firebase.firebasealerts.v1.CrashlyticsIssue\x12\x30\n\x0cresolve_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xe3\x01\n\x1f\x43rashlyticsVelocityAlertPayload\x12I\n\x05issue\x18\x01 \x01(\x0b\x32:.google.events.firebase.firebasealerts.v1.CrashlyticsIssue\x12/\n\x0b\x63reate_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x13\n\x0b\x63rash_count\x18\x03 \x01(\x03\x12\x18\n\x10\x63rash_percentage\x18\x04 \x01(\x01\x12\x15\n\rfirst_version\x18\x05 \x01(\t\"\xe1\x02\n!CrashlyticsStabilityDigestPayload\x12&\n\x0b\x64igest_date\x18\x05 \x01(\x0b\x32\x11.google.type.Date\x12y\n\x0ftrending_issues\x18\x06 \x03(\x0b\x32`.google.events.firebase.firebasealerts.v1.CrashlyticsStabilityDigestPayload.TrendingIssueDetails\x1a\x98\x01\n\x14TrendingIssueDetails\x12\x0c\n\x04type\x18\x01 \x01(\t\x12I\n\x05issue\x18\x02 \x01(\x0b\x32:.google.events.firebase.firebasealerts.v1.CrashlyticsIssue\x12\x13\n\x0b\x65vent_count\x18\x03 \x01(\x03\x12\x12\n\nuser_count\x18\x04 \x01(\x03\"j\n\x1d\x43rashlyticsNewAnrIssuePayload\x12I\n\x05issue\x18\x01 \x01(\x0b\x32:.google.events.firebase.firebasealerts.v1.CrashlyticsIssue\"E\n CrashlyticsMissingSymbolsPayload\x12\x13\n\x0b\x61pp_version\x18\x01 \x01(\t\x12\x0c\n\x04uuid\x18\x02 \x01(\t\"\x9f\x02\n\x1d\x46ireperfThresholdAlertPayload\x12\x12\n\nevent_name\x18\x01 \x01(\t\x12\x12\n\nevent_type\x18\x02 \x01(\t\x12\x13\n\x0bmetric_type\x18\x03 \x01(\t\x12\x13\n\x0bnum_samples\x18\x04 \x01(\x03\x12\x17\n\x0fthreshold_value\x18\x05 \x01(\x02\x12\x16\n\x0ethreshold_unit\x18\x06 \x01(\t\x12\x1c\n\x14\x63ondition_percentile\x18\x07 \x01(\x05\x12\x13\n\x0b\x61pp_version\x18\x08 \x01(\t\x12\x17\n\x0fviolation_value\x18\t \x01(\x02\x12\x16\n\x0eviolation_unit\x18\n \x01(\t\x12\x17\n\x0finvestigate_uri\x18\x0b \x01(\t\"\x93\x01\n\"AppDistroNewTesterIosDevicePayload\x12\x13\n\x0btester_name\x18\x01 \x01(\t\x12\x14\n\x0ctester_email\x18\x02 \x01(\t\x12 \n\x18tester_device_model_name\x18\x03 \x01(\t\x12 \n\x18tester_device_identifier\x18\x04 \x01(\t\"\xf9\x01\n\x1d\x41ppDistroInAppFeedbackPayload\x12\x17\n\x0f\x66\x65\x65\x64\x62\x61\x63k_report\x18\x01 \x01(\t\x12\x1c\n\x14\x66\x65\x65\x64\x62\x61\x63k_console_uri\x18\x08 \x01(\t\x12\x13\n\x0btester_name\x18\x02 \x01(\t\x12\x14\n\x0ctester_email\x18\x03 \x01(\t\x12\x13\n\x0b\x61pp_version\x18\t \x01(\t\x12\x0c\n\x04text\x18\x06 \x01(\t\x12\x16\n\x0escreenshot_uri\x18\x07 \x01(\tJ\x04\x08\x04\x10\x05J\x04\x08\x05\x10\x06R\x0f\x64isplay_versionR\rbuild_versionR\x0fscreenshot_uris\"d\n\x18\x42illingPlanUpdatePayload\x12\x14\n\x0c\x62illing_plan\x18\x01 \x01(\t\x12\x17\n\x0fprincipal_email\x18\x02 \x01(\t\x12\x19\n\x11notification_type\x18\x03 \x01(\t\"T\n!BillingPlanAutomatedUpdatePayload\x12\x14\n\x0c\x62illing_plan\x18\x01 \x01(\t\x12\x19\n\x11notification_type\x18\x02 \x01(\tB\xd4\x01\n,com.google.events.firebase.firebasealerts.v1B\x16\x43loudEventPayloadProto\xaa\x02\x31Google.Events.Protobuf.Firebase.FirebaseAlerts.V1\xca\x02(Google\\Events\\Firebase\\FirebaseAlerts\\V1\xea\x02,Google::Events::Firebase::FirebaseAlerts::V1b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.protobuf.Timestamp", "google/protobuf/timestamp.proto"],
-    ["google.type.Date", "google/type/date.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events

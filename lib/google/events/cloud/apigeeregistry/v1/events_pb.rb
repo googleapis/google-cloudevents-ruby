@@ -11,29 +11,7 @@ require 'google/events/cloudevent_pb'
 descriptor_data = "\n2google/events/cloud/apigeeregistry/v1/events.proto\x12%google.events.cloud.apigeeregistry.v1\x1a\x30google/events/cloud/apigeeregistry/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\xa1\x01\n\x14InstanceCreatedEvent\x12\x46\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x38.google.events.cloud.apigeeregistry.v1.InstanceEventData:A\xb2\xf8\xd8,/google.cloud.apigeeregistry.instance.v1.created\xca\xf8\xd8,\x08instance\"\xa1\x01\n\x14InstanceDeletedEvent\x12\x46\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x38.google.events.cloud.apigeeregistry.v1.InstanceEventData:A\xb2\xf8\xd8,/google.cloud.apigeeregistry.instance.v1.deleted\xca\xf8\xd8,\x08instance\"\x8d\x01\n\x0f\x41piCreatedEvent\x12\x41\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x33.google.events.cloud.apigeeregistry.v1.ApiEventData:7\xb2\xf8\xd8,*google.cloud.apigeeregistry.api.v1.created\xca\xf8\xd8,\x03\x61pi\"\x8d\x01\n\x0f\x41piUpdatedEvent\x12\x41\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x33.google.events.cloud.apigeeregistry.v1.ApiEventData:7\xb2\xf8\xd8,*google.cloud.apigeeregistry.api.v1.updated\xca\xf8\xd8,\x03\x61pi\"\x8d\x01\n\x0f\x41piDeletedEvent\x12\x41\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x33.google.events.cloud.apigeeregistry.v1.ApiEventData:7\xb2\xf8\xd8,*google.cloud.apigeeregistry.api.v1.deleted\xca\xf8\xd8,\x03\x61pi\"\xae\x01\n\x16\x41piVersionCreatedEvent\x12H\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32:.google.events.cloud.apigeeregistry.v1.ApiVersionEventData:J\xb2\xf8\xd8,1google.cloud.apigeeregistry.apiVersion.v1.created\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\x07version\"\xae\x01\n\x16\x41piVersionUpdatedEvent\x12H\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32:.google.events.cloud.apigeeregistry.v1.ApiVersionEventData:J\xb2\xf8\xd8,1google.cloud.apigeeregistry.apiVersion.v1.updated\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\x07version\"\xae\x01\n\x16\x41piVersionDeletedEvent\x12H\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32:.google.events.cloud.apigeeregistry.v1.ApiVersionEventData:J\xb2\xf8\xd8,1google.cloud.apigeeregistry.apiVersion.v1.deleted\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\x07version\"\xae\x01\n\x13\x41piSpecCreatedEvent\x12\x45\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x37.google.events.cloud.apigeeregistry.v1.ApiSpecEventData:P\xb2\xf8\xd8,.google.cloud.apigeeregistry.apiSpec.v1.created\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\x07version\xca\xf8\xd8,\x04spec\"\xae\x01\n\x13\x41piSpecUpdatedEvent\x12\x45\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x37.google.events.cloud.apigeeregistry.v1.ApiSpecEventData:P\xb2\xf8\xd8,.google.cloud.apigeeregistry.apiSpec.v1.updated\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\x07version\xca\xf8\xd8,\x04spec\"\xae\x01\n\x13\x41piSpecDeletedEvent\x12\x45\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x37.google.events.cloud.apigeeregistry.v1.ApiSpecEventData:P\xb2\xf8\xd8,.google.cloud.apigeeregistry.apiSpec.v1.deleted\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\x07version\xca\xf8\xd8,\x04spec\"\xba\x01\n\x19\x41piDeploymentCreatedEvent\x12K\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32=.google.events.cloud.apigeeregistry.v1.ApiDeploymentEventData:P\xb2\xf8\xd8,4google.cloud.apigeeregistry.apiDeployment.v1.created\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\ndeployment\"\xba\x01\n\x19\x41piDeploymentUpdatedEvent\x12K\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32=.google.events.cloud.apigeeregistry.v1.ApiDeploymentEventData:P\xb2\xf8\xd8,4google.cloud.apigeeregistry.apiDeployment.v1.updated\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\ndeployment\"\xba\x01\n\x19\x41piDeploymentDeletedEvent\x12K\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32=.google.events.cloud.apigeeregistry.v1.ApiDeploymentEventData:P\xb2\xf8\xd8,4google.cloud.apigeeregistry.apiDeployment.v1.deleted\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\ndeploymentB\xe7\x03\xaa\x02.Google.Events.Protobuf.Cloud.ApigeeRegistry.V1\xca\x02%Google\\Events\\Cloud\\ApigeeRegistry\\V1\xea\x02)Google::Events::Cloud::ApigeeRegistry::V1\xba\xf8\xd8,\x0f\x41pigee Registry\xc2\xf8\xd8,A\n\x08instance\x12\x35The resource ID of the Instance triggering the event.\xc2\xf8\xd8,7\n\x03\x61pi\x12\x30The resource ID of the Api triggering the event.\xc2\xf8\xd8,?\n\x07version\x12\x34The resource ID of the Version triggering the event.\xc2\xf8\xd8,9\n\x04spec\x12\x31The resource ID of the Spec triggering the event.\xc2\xf8\xd8,E\n\ndeployment\x12\x37The resource ID of the Deployment triggering the event.b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.events.cloud.apigeeregistry.v1.InstanceEventData", "google/events/cloud/apigeeregistry/v1/data.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events
