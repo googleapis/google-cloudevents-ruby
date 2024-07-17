@@ -18,17 +18,17 @@ on:
 
 jobs:
   check-names:
-    if: ${{ github.repository == 'googleapis/google-cloudevents-ruby' }}
+    if: ${{ github.event.sender.login == 'yoshi-code-bot' && github.repository == 'googleapis/google-cloudevents-ruby' }}
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.YOSHI_APPROVER_TOKEN }}
     steps:
-      - name: Install Ruby 3.2
+      - name: Install Ruby 3.3
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2"
+          ruby-version: "3.3"
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install dependencies
         run: |
           gem install --no-document toys
