@@ -10,29 +10,7 @@ require 'google/protobuf/timestamp_pb'
 descriptor_data = "\n,google/events/cloud/apigateway/v1/data.proto\x12!google.events.cloud.apigateway.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb6\x03\n\x03\x41pi\x12\x0c\n\x04name\x18\x01 \x01(\t\x12/\n\x0b\x63reate_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x42\n\x06labels\x18\x04 \x03(\x0b\x32\x32.google.events.cloud.apigateway.v1.Api.LabelsEntry\x12\x14\n\x0c\x64isplay_name\x18\x05 \x01(\t\x12\x17\n\x0fmanaged_service\x18\x07 \x01(\t\x12;\n\x05state\x18\x0c \x01(\x0e\x32,.google.events.cloud.apigateway.v1.Api.State\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"`\n\x05State\x12\x15\n\x11STATE_UNSPECIFIED\x10\x00\x12\x0c\n\x08\x43REATING\x10\x01\x12\n\n\x06\x41\x43TIVE\x10\x02\x12\n\n\x06\x46\x41ILED\x10\x03\x12\x0c\n\x08\x44\x45LETING\x10\x04\x12\x0c\n\x08UPDATING\x10\x05\"\xdf\x07\n\tApiConfig\x12\x0c\n\x04name\x18\x01 \x01(\t\x12/\n\x0b\x63reate_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12H\n\x06labels\x18\x04 \x03(\x0b\x32\x38.google.events.cloud.apigateway.v1.ApiConfig.LabelsEntry\x12\x14\n\x0c\x64isplay_name\x18\x05 \x01(\t\x12\x1f\n\x17gateway_service_account\x18\x0e \x01(\t\x12\x19\n\x11service_config_id\x18\x0c \x01(\t\x12\x41\n\x05state\x18\x08 \x01(\x0e\x32\x32.google.events.cloud.apigateway.v1.ApiConfig.State\x12W\n\x11openapi_documents\x18\t \x03(\x0b\x32<.google.events.cloud.apigateway.v1.ApiConfig.OpenApiDocument\x12Y\n\rgrpc_services\x18\n \x03(\x0b\x32\x42.google.events.cloud.apigateway.v1.ApiConfig.GrpcServiceDefinition\x12R\n\x17managed_service_configs\x18\x0b \x03(\x0b\x32\x31.google.events.cloud.apigateway.v1.ApiConfig.File\x1a&\n\x04\x46ile\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x10\n\x08\x63ontents\x18\x02 \x01(\x0c\x1aV\n\x0fOpenApiDocument\x12\x43\n\x08\x64ocument\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.apigateway.v1.ApiConfig.File\x1aZ\n\x15GrpcServiceDefinition\x12\x41\n\x06source\x18\x02 \x03(\x0b\x32\x31.google.events.cloud.apigateway.v1.ApiConfig.File\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"p\n\x05State\x12\x15\n\x11STATE_UNSPECIFIED\x10\x00\x12\x0c\n\x08\x43REATING\x10\x01\x12\n\n\x06\x41\x43TIVE\x10\x02\x12\n\n\x06\x46\x41ILED\x10\x03\x12\x0c\n\x08\x44\x45LETING\x10\x04\x12\x0c\n\x08UPDATING\x10\x05\x12\x0e\n\nACTIVATING\x10\x06\"\xd7\x03\n\x07Gateway\x12\x0c\n\x04name\x18\x01 \x01(\t\x12/\n\x0b\x63reate_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x46\n\x06labels\x18\x04 \x03(\x0b\x32\x36.google.events.cloud.apigateway.v1.Gateway.LabelsEntry\x12\x14\n\x0c\x64isplay_name\x18\x05 \x01(\t\x12\x12\n\napi_config\x18\x06 \x01(\t\x12?\n\x05state\x18\x07 \x01(\x0e\x32\x30.google.events.cloud.apigateway.v1.Gateway.State\x12\x18\n\x10\x64\x65\x66\x61ult_hostname\x18\t \x01(\t\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"`\n\x05State\x12\x15\n\x11STATE_UNSPECIFIED\x10\x00\x12\x0c\n\x08\x43REATING\x10\x01\x12\n\n\x06\x41\x43TIVE\x10\x02\x12\n\n\x06\x46\x41ILED\x10\x03\x12\x0c\n\x08\x44\x45LETING\x10\x04\x12\x0c\n\x08UPDATING\x10\x05\"`\n\x10GatewayEventData\x12@\n\x07payload\x18\x01 \x01(\x0b\x32*.google.events.cloud.apigateway.v1.GatewayH\x00\x88\x01\x01\x42\n\n\x08_payload\"d\n\x12\x41piConfigEventData\x12\x42\n\x07payload\x18\x01 \x01(\x0b\x32,.google.events.cloud.apigateway.v1.ApiConfigH\x00\x88\x01\x01\x42\n\n\x08_payload\"X\n\x0c\x41piEventData\x12<\n\x07payload\x18\x01 \x01(\x0b\x32&.google.events.cloud.apigateway.v1.ApiH\x00\x88\x01\x01\x42\n\n\x08_payloadBy\xaa\x02*Google.Events.Protobuf.Cloud.ApiGateway.V1\xca\x02!Google\\Events\\Cloud\\ApiGateway\\V1\xea\x02%Google::Events::Cloud::ApiGateway::V1b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.protobuf.Timestamp", "google/protobuf/timestamp.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events

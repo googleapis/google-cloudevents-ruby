@@ -11,29 +11,7 @@ require 'google/events/cloudevent_pb'
 descriptor_data = "\n\'google/events/cloud/iot/v1/events.proto\x12\x1agoogle.events.cloud.iot.v1\x1a%google/events/cloud/iot/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\x9b\x01\n\x11\x43reateDeviceEvent\x12\x39\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32+.google.events.cloud.iot.v1.DeviceEventData:K\xb2\xf8\xd8,.google.cloud.iot.v1.DeviceManager.CreateDevice\xca\xf8\xd8,\x06\x64\x65vice\xca\xf8\xd8,\x08registry\"\x9b\x01\n\x11UpdateDeviceEvent\x12\x39\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32+.google.events.cloud.iot.v1.DeviceEventData:K\xb2\xf8\xd8,.google.cloud.iot.v1.DeviceManager.UpdateDevice\xca\xf8\xd8,\x06\x64\x65vice\xca\xf8\xd8,\x08registry\"\x9b\x01\n\x11\x44\x65leteDeviceEvent\x12\x39\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32+.google.events.cloud.iot.v1.DeviceEventData:K\xb2\xf8\xd8,.google.cloud.iot.v1.DeviceManager.DeleteDevice\xca\xf8\xd8,\x06\x64\x65vice\xca\xf8\xd8,\x08registry\"\xa2\x01\n\x19\x43reateDeviceRegistryEvent\x12;\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32-.google.events.cloud.iot.v1.RegistryEventData:H\xb2\xf8\xd8,6google.cloud.iot.v1.DeviceManager.CreateDeviceRegistry\xca\xf8\xd8,\x08registry\"\xa2\x01\n\x19UpdateDeviceRegistryEvent\x12;\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32-.google.events.cloud.iot.v1.RegistryEventData:H\xb2\xf8\xd8,6google.cloud.iot.v1.DeviceManager.UpdateDeviceRegistry\xca\xf8\xd8,\x08registry\"\xa2\x01\n\x19\x44\x65leteDeviceRegistryEvent\x12;\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32-.google.events.cloud.iot.v1.RegistryEventData:H\xb2\xf8\xd8,6google.cloud.iot.v1.DeviceManager.DeleteDeviceRegistry\xca\xf8\xd8,\x08registryB\x8c\x02\xaa\x02#Google.Events.Protobuf.Cloud.Iot.V1\xca\x02\x1aGoogle\\Events\\Cloud\\Iot\\V1\xea\x02\x1eGoogle::Events::Cloud::Iot::V1\xba\xf8\xd8,\tCloud IoT\xc2\xf8\xd8,E\n\x06\x64\x65vice\x12\x33The resource ID of the Device triggering the event.\x1a\x06\x64\x65vice\xc2\xf8\xd8,K\n\x08registry\x12\x35The resource ID of the Registry triggering the event.\x1a\x08registryb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.events.cloud.iot.v1.DeviceEventData", "google/events/cloud/iot/v1/data.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events

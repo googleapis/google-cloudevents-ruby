@@ -4,32 +4,15 @@
 
 require 'google/protobuf'
 
+require 'google/protobuf/duration_pb'
+require 'google/protobuf/timestamp_pb'
+require 'google/rpc/status_pb'
 
-descriptor_data = "\n+google/events/cloud/scheduler/v1/data.proto\x12 google.events.cloud.scheduler.v1\"\'\n\x10SchedulerJobData\x12\x13\n\x0b\x63ustom_data\x18\x01 \x01(\x0c\x42v\xaa\x02)Google.Events.Protobuf.Cloud.Scheduler.V1\xca\x02 Google\\Events\\Cloud\\Scheduler\\V1\xea\x02$Google::Events::Cloud::Scheduler::V1b\x06proto3"
+
+descriptor_data = "\n+google/events/cloud/scheduler/v1/data.proto\x12 google.events.cloud.scheduler.v1\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17google/rpc/status.proto\"\'\n\x10SchedulerJobData\x12\x13\n\x0b\x63ustom_data\x18\x01 \x01(\x0c\"\x86\x03\n\nHttpTarget\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x41\n\x0bhttp_method\x18\x02 \x01(\x0e\x32,.google.events.cloud.scheduler.v1.HttpMethod\x12J\n\x07headers\x18\x03 \x03(\x0b\x32\x39.google.events.cloud.scheduler.v1.HttpTarget.HeadersEntry\x12\x0c\n\x04\x62ody\x18\x04 \x01(\x0c\x12\x43\n\x0boauth_token\x18\x05 \x01(\x0b\x32,.google.events.cloud.scheduler.v1.OAuthTokenH\x00\x12\x41\n\noidc_token\x18\x06 \x01(\x0b\x32+.google.events.cloud.scheduler.v1.OidcTokenH\x00\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x16\n\x14\x61uthorization_header\"\xd1\x02\n\x13\x41ppEngineHttpTarget\x12\x41\n\x0bhttp_method\x18\x01 \x01(\x0e\x32,.google.events.cloud.scheduler.v1.HttpMethod\x12N\n\x12\x61pp_engine_routing\x18\x02 \x01(\x0b\x32\x32.google.events.cloud.scheduler.v1.AppEngineRouting\x12\x14\n\x0crelative_uri\x18\x03 \x01(\t\x12S\n\x07headers\x18\x04 \x03(\x0b\x32\x42.google.events.cloud.scheduler.v1.AppEngineHttpTarget.HeadersEntry\x12\x0c\n\x04\x62ody\x18\x05 \x01(\x0c\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xb7\x01\n\x0cPubsubTarget\x12\x12\n\ntopic_name\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\x0c\x12R\n\nattributes\x18\x04 \x03(\x0b\x32>.google.events.cloud.scheduler.v1.PubsubTarget.AttributesEntry\x1a\x31\n\x0f\x41ttributesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"T\n\x10\x41ppEngineRouting\x12\x0f\n\x07service\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\t\x12\x10\n\x08instance\x18\x03 \x01(\t\x12\x0c\n\x04host\x18\x04 \x01(\t\":\n\nOAuthToken\x12\x1d\n\x15service_account_email\x18\x01 \x01(\t\x12\r\n\x05scope\x18\x02 \x01(\t\"<\n\tOidcToken\x12\x1d\n\x15service_account_email\x18\x01 \x01(\t\x12\x10\n\x08\x61udience\x18\x02 \x01(\t\"\x92\x06\n\x03Job\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12G\n\rpubsub_target\x18\x04 \x01(\x0b\x32..google.events.cloud.scheduler.v1.PubsubTargetH\x00\x12W\n\x16\x61pp_engine_http_target\x18\x05 \x01(\x0b\x32\x35.google.events.cloud.scheduler.v1.AppEngineHttpTargetH\x00\x12\x43\n\x0bhttp_target\x18\x06 \x01(\x0b\x32,.google.events.cloud.scheduler.v1.HttpTargetH\x00\x12\x10\n\x08schedule\x18\x14 \x01(\t\x12\x11\n\ttime_zone\x18\x15 \x01(\t\x12\x34\n\x10user_update_time\x18\t \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12:\n\x05state\x18\n \x01(\x0e\x32+.google.events.cloud.scheduler.v1.Job.State\x12\"\n\x06status\x18\x0b \x01(\x0b\x32\x12.google.rpc.Status\x12\x31\n\rschedule_time\x18\x11 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\x11last_attempt_time\x18\x12 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x43\n\x0cretry_config\x18\x13 \x01(\x0b\x32-.google.events.cloud.scheduler.v1.RetryConfig\x12\x33\n\x10\x61ttempt_deadline\x18\x16 \x01(\x0b\x32\x19.google.protobuf.Duration\"X\n\x05State\x12\x15\n\x11STATE_UNSPECIFIED\x10\x00\x12\x0b\n\x07\x45NABLED\x10\x01\x12\n\n\x06PAUSED\x10\x02\x12\x0c\n\x08\x44ISABLED\x10\x03\x12\x11\n\rUPDATE_FAILED\x10\x04\x42\x08\n\x06target\"\xe2\x01\n\x0bRetryConfig\x12\x13\n\x0bretry_count\x18\x01 \x01(\x05\x12\x35\n\x12max_retry_duration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x37\n\x14min_backoff_duration\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x37\n\x14max_backoff_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x15\n\rmax_doublings\x18\x05 \x01(\x05\"F\n\x0cJobEventData\x12\x36\n\x07payload\x18\x01 \x01(\x0b\x32%.google.events.cloud.scheduler.v1.Job*s\n\nHttpMethod\x12\x1b\n\x17HTTP_METHOD_UNSPECIFIED\x10\x00\x12\x08\n\x04POST\x10\x01\x12\x07\n\x03GET\x10\x02\x12\x08\n\x04HEAD\x10\x03\x12\x07\n\x03PUT\x10\x04\x12\n\n\x06\x44\x45LETE\x10\x05\x12\t\n\x05PATCH\x10\x06\x12\x0b\n\x07OPTIONS\x10\x07\x42v\xaa\x02)Google.Events.Protobuf.Cloud.Scheduler.V1\xca\x02 Google\\Events\\Cloud\\Scheduler\\V1\xea\x02$Google::Events::Cloud::Scheduler::V1b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events
@@ -37,6 +20,17 @@ module Google
       module Scheduler
         module V1
           SchedulerJobData = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.SchedulerJobData").msgclass
+          HttpTarget = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.HttpTarget").msgclass
+          AppEngineHttpTarget = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.AppEngineHttpTarget").msgclass
+          PubsubTarget = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.PubsubTarget").msgclass
+          AppEngineRouting = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.AppEngineRouting").msgclass
+          OAuthToken = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.OAuthToken").msgclass
+          OidcToken = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.OidcToken").msgclass
+          Job = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.Job").msgclass
+          Job::State = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.Job.State").enummodule
+          RetryConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.RetryConfig").msgclass
+          JobEventData = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.JobEventData").msgclass
+          HttpMethod = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("google.events.cloud.scheduler.v1.HttpMethod").enummodule
         end
       end
     end
