@@ -10,29 +10,7 @@ require 'google/protobuf/timestamp_pb'
 descriptor_data = "\n)google/events/cloud/storage/v1/data.proto\x12\x1egoogle.events.cloud.storage.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x91\x08\n\x11StorageObjectData\x12\x18\n\x10\x63ontent_encoding\x18\x01 \x01(\t\x12\x1b\n\x13\x63ontent_disposition\x18\x02 \x01(\t\x12\x15\n\rcache_control\x18\x03 \x01(\t\x12\x18\n\x10\x63ontent_language\x18\x05 \x01(\t\x12\x16\n\x0emetageneration\x18\x06 \x01(\x03\x12\x30\n\x0ctime_deleted\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x14\n\x0c\x63ontent_type\x18\x08 \x01(\t\x12\x0c\n\x04size\x18\t \x01(\x03\x12\x30\n\x0ctime_created\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0e\n\x06\x63rc32c\x18\x0b \x01(\t\x12\x17\n\x0f\x63omponent_count\x18\x0c \x01(\x05\x12\x10\n\x08md5_hash\x18\r \x01(\t\x12\x0c\n\x04\x65tag\x18\x0e \x01(\t\x12+\n\x07updated\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x15\n\rstorage_class\x18\x10 \x01(\t\x12\x14\n\x0ckms_key_name\x18\x11 \x01(\t\x12>\n\x1atime_storage_class_updated\x18\x12 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x16\n\x0etemporary_hold\x18\x13 \x01(\x08\x12=\n\x19retention_expiration_time\x18\x14 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12Q\n\x08metadata\x18\x15 \x03(\x0b\x32?.google.events.cloud.storage.v1.StorageObjectData.MetadataEntry\x12\x18\n\x10\x65vent_based_hold\x18\x1d \x01(\x08\x12\x0c\n\x04name\x18\x17 \x01(\t\x12\n\n\x02id\x18\x18 \x01(\t\x12\x0e\n\x06\x62ucket\x18\x19 \x01(\t\x12\x12\n\ngeneration\x18\x1a \x01(\x03\x12\x61\n\x13\x63ustomer_encryption\x18\x1c \x01(\x0b\x32\x44.google.events.cloud.storage.v1.StorageObjectData.CustomerEncryption\x12\x12\n\nmedia_link\x18\x64 \x01(\t\x12\x11\n\tself_link\x18\x65 \x01(\t\x12\x0c\n\x04kind\x18\x66 \x01(\t\x1a\x46\n\x12\x43ustomerEncryption\x12\x1c\n\x14\x65ncryption_algorithm\x18\x01 \x01(\t\x12\x12\n\nkey_sha256\x18\x02 \x01(\t\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42p\xaa\x02\'Google.Events.Protobuf.Cloud.Storage.V1\xca\x02\x1eGoogle\\Events\\Cloud\\Storage\\V1\xea\x02\"Google::Events::Cloud::Storage::V1b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.protobuf.Timestamp", "google/protobuf/timestamp.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events

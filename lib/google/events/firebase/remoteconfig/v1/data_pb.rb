@@ -10,29 +10,7 @@ require 'google/protobuf/timestamp_pb'
 descriptor_data = "\n1google/events/firebase/remoteconfig/v1/data.proto\x12&google.events.firebase.remoteconfig.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8b\x03\n\x15RemoteConfigEventData\x12\x16\n\x0eversion_number\x18\x01 \x01(\x03\x12/\n\x0bupdate_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12M\n\x0bupdate_user\x18\x03 \x01(\x0b\x32\x38.google.events.firebase.remoteconfig.v1.RemoteConfigUser\x12\x13\n\x0b\x64\x65scription\x18\x04 \x01(\t\x12W\n\rupdate_origin\x18\x05 \x01(\x0e\x32@.google.events.firebase.remoteconfig.v1.RemoteConfigUpdateOrigin\x12S\n\x0bupdate_type\x18\x06 \x01(\x0e\x32>.google.events.firebase.remoteconfig.v1.RemoteConfigUpdateType\x12\x17\n\x0frollback_source\x18\x07 \x01(\x03\"B\n\x10RemoteConfigUser\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\timage_url\x18\x03 \x01(\t*v\n\x18RemoteConfigUpdateOrigin\x12+\n\'REMOTE_CONFIG_UPDATE_ORIGIN_UNSPECIFIED\x10\x00\x12\x0b\n\x07\x43ONSOLE\x10\x01\x12\x0c\n\x08REST_API\x10\x02\x12\x12\n\x0e\x41\x44MIN_SDK_NODE\x10\x03*|\n\x16RemoteConfigUpdateType\x12)\n%REMOTE_CONFIG_UPDATE_TYPE_UNSPECIFIED\x10\x00\x12\x16\n\x12INCREMENTAL_UPDATE\x10\x01\x12\x11\n\rFORCED_UPDATE\x10\x02\x12\x0c\n\x08ROLLBACK\x10\x03\x42\xbf\x01\n*com.google.events.firebase.remoteconfig.v1B\tDataProto\xaa\x02/Google.Events.Protobuf.Firebase.RemoteConfig.V1\xca\x02&Google\\Events\\Firebase\\RemoteConfig\\V1\xea\x02*Google::Events::Firebase::RemoteConfig::V1b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.protobuf.Timestamp", "google/protobuf/timestamp.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events

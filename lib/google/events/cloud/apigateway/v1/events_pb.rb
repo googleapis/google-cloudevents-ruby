@@ -11,29 +11,7 @@ require 'google/events/cloudevent_pb'
 descriptor_data = "\n.google/events/cloud/apigateway/v1/events.proto\x12!google.events.cloud.apigateway.v1\x1a,google/events/cloud/apigateway/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\x95\x01\n\x13GatewayCreatedEvent\x12\x41\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x33.google.events.cloud.apigateway.v1.GatewayEventData:;\xb2\xf8\xd8,*google.cloud.apigateway.gateway.v1.created\xca\xf8\xd8,\x07gateway\"\x95\x01\n\x13GatewayUpdatedEvent\x12\x41\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x33.google.events.cloud.apigateway.v1.GatewayEventData:;\xb2\xf8\xd8,*google.cloud.apigateway.gateway.v1.updated\xca\xf8\xd8,\x07gateway\"\x95\x01\n\x13GatewayDeletedEvent\x12\x41\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x33.google.events.cloud.apigateway.v1.GatewayEventData:;\xb2\xf8\xd8,*google.cloud.apigateway.gateway.v1.deleted\xca\xf8\xd8,\x07gateway\"\x85\x01\n\x0f\x41piCreatedEvent\x12=\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32/.google.events.cloud.apigateway.v1.ApiEventData:3\xb2\xf8\xd8,&google.cloud.apigateway.api.v1.created\xca\xf8\xd8,\x03\x61pi\"\x85\x01\n\x0f\x41piUpdatedEvent\x12=\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32/.google.events.cloud.apigateway.v1.ApiEventData:3\xb2\xf8\xd8,&google.cloud.apigateway.api.v1.updated\xca\xf8\xd8,\x03\x61pi\"\x85\x01\n\x0f\x41piDeletedEvent\x12=\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32/.google.events.cloud.apigateway.v1.ApiEventData:3\xb2\xf8\xd8,&google.cloud.apigateway.api.v1.deleted\xca\xf8\xd8,\x03\x61pi\"\xa5\x01\n\x15\x41piConfigCreatedEvent\x12\x43\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x35.google.events.cloud.apigateway.v1.ApiConfigEventData:G\xb2\xf8\xd8,,google.cloud.apigateway.apiConfig.v1.created\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\tapiconfig\"\xa5\x01\n\x15\x41piConfigUpdatedEvent\x12\x43\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x35.google.events.cloud.apigateway.v1.ApiConfigEventData:G\xb2\xf8\xd8,,google.cloud.apigateway.apiConfig.v1.updated\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\tapiconfig\"\xa5\x01\n\x15\x41piConfigDeletedEvent\x12\x43\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x35.google.events.cloud.apigateway.v1.ApiConfigEventData:G\xb2\xf8\xd8,,google.cloud.apigateway.apiConfig.v1.deleted\xca\xf8\xd8,\x03\x61pi\xca\xf8\xd8,\tapiconfigB\xdc\x02\xaa\x02*Google.Events.Protobuf.Cloud.ApiGateway.V1\xca\x02!Google\\Events\\Cloud\\ApiGateway\\V1\xea\x02%Google::Events::Cloud::ApiGateway::V1\xba\xf8\xd8,\x0b\x41PI Gateway\xc2\xf8\xd8,?\n\x07gateway\x12\x34The resource ID of the Gateway triggering the event.\xc2\xf8\xd8,7\n\x03\x61pi\x12\x30The resource ID of the Api triggering the event.\xc2\xf8\xd8,N\n\tapiconfig\x12\x36The resource ID of the ApiConfig triggering the event.\x1a\tapiConfigb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.events.cloud.apigateway.v1.GatewayEventData", "google/events/cloud/apigateway/v1/data.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events

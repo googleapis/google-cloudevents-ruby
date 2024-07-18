@@ -11,29 +11,7 @@ require 'google/events/cloudevent_pb'
 descriptor_data = "\n-google/events/cloud/metastore/v1/events.proto\x12 google.events.cloud.metastore.v1\x1a+google/events/cloud/metastore/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\x9f\x01\n\x16\x46\x65\x64\x65rationCreatedEvent\x12\x43\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x35.google.events.cloud.metastore.v1.FederationEventData:@\xb2\xf8\xd8,,google.cloud.metastore.federation.v1.created\xca\xf8\xd8,\nfederation\"\x9f\x01\n\x16\x46\x65\x64\x65rationUpdatedEvent\x12\x43\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x35.google.events.cloud.metastore.v1.FederationEventData:@\xb2\xf8\xd8,,google.cloud.metastore.federation.v1.updated\xca\xf8\xd8,\nfederation\"\x9f\x01\n\x16\x46\x65\x64\x65rationDeletedEvent\x12\x43\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x35.google.events.cloud.metastore.v1.FederationEventData:@\xb2\xf8\xd8,,google.cloud.metastore.federation.v1.deleted\xca\xf8\xd8,\nfederation\"\x93\x01\n\x13ServiceCreatedEvent\x12@\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x32.google.events.cloud.metastore.v1.ServiceEventData::\xb2\xf8\xd8,)google.cloud.metastore.service.v1.created\xca\xf8\xd8,\x07service\"\x93\x01\n\x13ServiceUpdatedEvent\x12@\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x32.google.events.cloud.metastore.v1.ServiceEventData::\xb2\xf8\xd8,)google.cloud.metastore.service.v1.updated\xca\xf8\xd8,\x07service\"\x93\x01\n\x13ServiceDeletedEvent\x12@\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x32.google.events.cloud.metastore.v1.ServiceEventData::\xb2\xf8\xd8,)google.cloud.metastore.service.v1.deleted\xca\xf8\xd8,\x07service\"\xbb\x01\n\x1aMetadataImportCreatedEvent\x12G\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x39.google.events.cloud.metastore.v1.MetadataImportEventData:T\xb2\xf8\xd8,0google.cloud.metastore.metadataImport.v1.created\xca\xf8\xd8,\x07service\xca\xf8\xd8,\x0emetadataimport\"\xbb\x01\n\x1aMetadataImportUpdatedEvent\x12G\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x39.google.events.cloud.metastore.v1.MetadataImportEventData:T\xb2\xf8\xd8,0google.cloud.metastore.metadataImport.v1.updated\xca\xf8\xd8,\x07service\xca\xf8\xd8,\x0emetadataimport\"\x9b\x01\n\x12\x42\x61\x63kupCreatedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.metastore.v1.BackupEventData:D\xb2\xf8\xd8,(google.cloud.metastore.backup.v1.created\xca\xf8\xd8,\x07service\xca\xf8\xd8,\x06\x62\x61\x63kup\"\x9b\x01\n\x12\x42\x61\x63kupDeletedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.metastore.v1.BackupEventData:D\xb2\xf8\xd8,(google.cloud.metastore.backup.v1.deleted\xca\xf8\xd8,\x07service\xca\xf8\xd8,\x06\x62\x61\x63kupB\xbf\x03\xaa\x02)Google.Events.Protobuf.Cloud.Metastore.V1\xca\x02 Google\\Events\\Cloud\\Metastore\\V1\xea\x02$Google::Events::Cloud::Metastore::V1\xba\xf8\xd8,\x12\x44\x61taproc Metastore\xc2\xf8\xd8,E\n\nfederation\x12\x37The resource ID of the Federation triggering the event.\xc2\xf8\xd8,?\n\x07service\x12\x34The resource ID of the Service triggering the event.\xc2\xf8\xd8,]\n\x0emetadataimport\x12;The resource ID of the MetadataImport triggering the event.\x1a\x0emetadataImport\xc2\xf8\xd8,=\n\x06\x62\x61\x63kup\x12\x33The resource ID of the Backup triggering the event.b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.events.cloud.metastore.v1.FederationEventData", "google/events/cloud/metastore/v1/data.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events

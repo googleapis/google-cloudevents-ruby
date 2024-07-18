@@ -11,29 +11,7 @@ require 'google/events/cloudevent_pb'
 descriptor_data = "\n:google/events/cloud/beyondcorp/appgateways/v1/events.proto\x12-google.events.cloud.beyondcorp.appgateways.v1\x1a\x38google/events/cloud/beyondcorp/appgateways/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\xb9\x01\n\x16\x41ppGatewayCreatedEvent\x12P\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x42.google.events.cloud.beyondcorp.appgateways.v1.AppGatewayEventData:M\xb2\xf8\xd8,9google.cloud.beyondcorp.appgateways.appGateway.v1.created\xca\xf8\xd8,\nappgateway\"\xb9\x01\n\x16\x41ppGatewayDeletedEvent\x12P\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x42.google.events.cloud.beyondcorp.appgateways.v1.AppGatewayEventData:M\xb2\xf8\xd8,9google.cloud.beyondcorp.appgateways.appGateway.v1.deleted\xca\xf8\xd8,\nappgatewayB\x83\x02\xaa\x02\x36Google.Events.Protobuf.Cloud.BeyondCorp.AppGateways.V1\xca\x02-Google\\Events\\Cloud\\BeyondCorp\\AppGateways\\V1\xea\x02\x32Google::Events::Cloud::BeyondCorp::AppGateways::V1\xba\xf8\xd8,\nBeyondCorp\xc2\xf8\xd8,Q\n\nappgateway\x12\x37The resource ID of the AppGateway triggering the event.\x1a\nappGatewayb\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
-
-begin
-  pool.add_serialized_file(descriptor_data)
-rescue TypeError
-  # Compatibility code: will be removed in the next major version.
-  require 'google/protobuf/descriptor_pb'
-  parsed = Google::Protobuf::FileDescriptorProto.decode(descriptor_data)
-  parsed.clear_dependency
-  serialized = parsed.class.encode(parsed)
-  file = pool.add_serialized_file(serialized)
-  warn "Warning: Protobuf detected an import path issue while loading generated file #{__FILE__}"
-  imports = [
-    ["google.events.cloud.beyondcorp.appgateways.v1.AppGatewayEventData", "google/events/cloud/beyondcorp/appgateways/v1/data.proto"],
-  ]
-  imports.each do |type_name, expected_filename|
-    import_file = pool.lookup(type_name).file_descriptor
-    if import_file.name != expected_filename
-      warn "- #{file.name} imports #{expected_filename}, but that import was loaded as #{import_file.name}"
-    end
-  end
-  warn "Each proto file must use a consistent fully-qualified name."
-  warn "This will become an error in the next major version."
-end
+pool.add_serialized_file(descriptor_data)
 
 module Google
   module Events
