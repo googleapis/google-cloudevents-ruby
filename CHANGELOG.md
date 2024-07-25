@@ -1,5 +1,16 @@
 # Changelog
 
+### 0.6.0 (2024-07-25)
+
+#### Features
+
+* Add events for batch v1 
+* Add events for deploy v1 
+* Add events for networkservices v1 
+* Add events for speech v1 
+* Add events with auth context for datastore v1 and firestore v1 
+* Add various new events for scheduler v1 
+
 ### 0.5.0 (2023-12-04)
 
 #### Features
