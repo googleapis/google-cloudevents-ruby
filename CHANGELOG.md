@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.7.0 (2025-01-13)
+
+#### Features
+
+* Require Ruby 3 ([#71](https://github.com/googleapis/google-cloudevents-ruby/issues/71)) 
+* Updates for pubsub events ([#70](https://github.com/googleapis/google-cloudevents-ruby/issues/70)) 
+
 ### 0.6.0 (2024-07-25)
 
 #### Features
