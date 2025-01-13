@@ -4,7 +4,7 @@ This repository contains types for CloudEvents issued by Google.
 
 ## Prerequisites
 
-- Ruby 2.6 (or higher)
+- Ruby 3.0 (or higher)
 
 ## Installation
 
