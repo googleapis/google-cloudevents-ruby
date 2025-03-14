@@ -39,7 +39,7 @@ version = ::Google::Events::VERSION
   spec.required_ruby_version = ">= 3.0"
 
   spec.add_dependency "googleapis-common-protos-types", "~> 1.6"
-  spec.add_dependency "google-protobuf", "~> 3.22"
+  spec.add_dependency "google-protobuf", ">= 3.25", "< 5.a"
 
   if spec.respond_to? :metadata
     spec.metadata["source_code_uri"] = "https://github.com/googleapis/google-cloudevents-ruby"
