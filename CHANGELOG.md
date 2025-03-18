@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.0.0 (2025-03-18)
+
+#### Features
+
+* Support for Protobuf 4.x and Ruby 3.4 ([#74](https://github.com/googleapis/google-cloudevents-ruby/issues/74)) 
+
 ### 0.7.0 (2025-01-13)
 
 #### Features
