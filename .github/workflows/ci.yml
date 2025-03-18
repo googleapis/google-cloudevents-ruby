@@ -17,16 +17,28 @@ jobs:
         include:
           - os: ubuntu-latest
             ruby: "3.0"
+            tasks: "--test-unit"
           - os: ubuntu-latest
             ruby: "3.1"
+            tasks: "--test-unit"
           - os: ubuntu-latest
             ruby: "3.2"
+            tasks: "--test-unit"
           - os: ubuntu-latest
             ruby: "3.3"
+            tasks: "--test-unit"
+          - os: ubuntu-latest
+            ruby: "3.4"
+            tasks: "--test-unit"
           - os: macos-latest
-            ruby: "3.3"
+            ruby: "3.4"
+            tasks: "--test-unit"
           - os: windows-latest
-            ruby: "3.3"
+            ruby: "3.4"
+            tasks: "--test-unit"
+          - os: ubuntu-latest
+            ruby: "3.4"
+            tasks: "--test-rubocop --test-yardoc --test-build"
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
@@ -41,4 +53,4 @@ jobs:
           gem install --no-document toys
       - name: Run CI
         run: |
-          toys ci -v
+          toys ci -v --only ${{ matrix.tasks }}
