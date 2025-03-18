@@ -20,6 +20,6 @@ module Google
     # Version of the Google events library
     # @return [String]
     #
-    VERSION = "0.7.0"
+    VERSION = "1.0.0"
   end
 end
