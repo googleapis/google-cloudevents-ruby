@@ -21,10 +21,10 @@ jobs:
     if: ${{ github.repository == 'googleapis/google-cloudevents-ruby' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Install Ruby 3.3
+      - name: Install Ruby 3.4
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version: "3.4"
       - name: Checkout repo
         uses: actions/checkout@v4
       - name: Install dependencies
