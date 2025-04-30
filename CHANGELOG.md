@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.1.0 (2025-04-30)
+
+#### Features
+
+* Updated required Ruby version to 3.1 ([#77](https://github.com/googleapis/google-cloudevents-ruby/issues/77)) 
+
 ### 1.0.0 (2025-03-18)
 
 #### Features
