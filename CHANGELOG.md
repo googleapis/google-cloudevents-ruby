@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.2.0 (2025-05-14)
+
+#### Features
+
+* Added ApiHub events ([#79](https://github.com/googleapis/google-cloudevents-ruby/issues/79)) 
+
 ### 1.1.0 (2025-04-30)
 
 #### Features
