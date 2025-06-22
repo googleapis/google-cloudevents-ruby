@@ -10,7 +10,7 @@ require 'google/events/firebase/remoteconfig/v1/data_pb'
 
 descriptor_data = "\n3google/events/firebase/remoteconfig/v1/events.proto\x12&google.events.firebase.remoteconfig.v1\x1a\x1egoogle/events/cloudevent.proto\x1a\x31google/events/firebase/remoteconfig/v1/data.proto\"\xa2\x01\n\x18RemoteConfigUpdatedEvent\x12K\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32=.google.events.firebase.remoteconfig.v1.RemoteConfigEventData:9\xb2\xf8\xd8,4google.firebase.remoteconfig.remoteConfig.v1.updatedB\xa3\x01\xaa\x02/Google.Events.Protobuf.Firebase.RemoteConfig.V1\xca\x02&Google\\Events\\Firebase\\RemoteConfig\\V1\xea\x02*Google::Events::Firebase::RemoteConfig::V1\xba\xf8\xd8,\x16\x46irebase Remote Configb\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

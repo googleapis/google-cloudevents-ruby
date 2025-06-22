@@ -9,7 +9,7 @@ require 'google/protobuf/timestamp_pb'
 
 descriptor_data = "\n;google/events/cloud/beyondcorp/clientgateways/v1/data.proto\x12\x30google.events.cloud.beyondcorp.clientgateways.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xef\x02\n\rClientGateway\x12\x0c\n\x04name\x18\x01 \x01(\t\x12/\n\x0b\x63reate_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12T\n\x05state\x18\x04 \x01(\x0e\x32\x45.google.events.cloud.beyondcorp.clientgateways.v1.ClientGateway.State\x12\n\n\x02id\x18\x05 \x01(\t\x12 \n\x18\x63lient_connector_service\x18\x06 \x01(\t\"j\n\x05State\x12\x15\n\x11STATE_UNSPECIFIED\x10\x00\x12\x0c\n\x08\x43REATING\x10\x01\x12\x0c\n\x08UPDATING\x10\x02\x12\x0c\n\x08\x44\x45LETING\x10\x03\x12\x0b\n\x07RUNNING\x10\x04\x12\x08\n\x04\x44OWN\x10\x05\x12\t\n\x05\x45RROR\x10\x06\"{\n\x16\x43lientGatewayEventData\x12U\n\x07payload\x18\x01 \x01(\x0b\x32?.google.events.cloud.beyondcorp.clientgateways.v1.ClientGatewayH\x00\x88\x01\x01\x42\n\n\x08_payloadB\xa7\x01\xaa\x02\x39Google.Events.Protobuf.Cloud.BeyondCorp.ClientGateways.V1\xca\x02\x30Google\\Events\\Cloud\\BeyondCorp\\ClientGateways\\V1\xea\x02\x35Google::Events::Cloud::BeyondCorp::ClientGateways::V1b\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

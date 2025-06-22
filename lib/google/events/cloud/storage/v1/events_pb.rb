@@ -10,7 +10,7 @@ require 'google/events/cloudevent_pb'
 
 descriptor_data = "\n+google/events/cloud/storage/v1/events.proto\x12\x1egoogle.events.cloud.storage.v1\x1a)google/events/cloud/storage/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\x91\x01\n\x14ObjectFinalizedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.storage.v1.StorageObjectData:8\xb2\xf8\xd8,(google.cloud.storage.object.v1.finalized\xca\xf8\xd8,\x06\x62ucket\"\x8f\x01\n\x13ObjectArchivedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.storage.v1.StorageObjectData:7\xb2\xf8\xd8,\'google.cloud.storage.object.v1.archived\xca\xf8\xd8,\x06\x62ucket\"\x8d\x01\n\x12ObjectDeletedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.storage.v1.StorageObjectData:6\xb2\xf8\xd8,&google.cloud.storage.object.v1.deleted\xca\xf8\xd8,\x06\x62ucket\"\x9d\x01\n\x1aObjectMetadataUpdatedEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.storage.v1.StorageObjectData:>\xb2\xf8\xd8,.google.cloud.storage.object.v1.metadataUpdated\xca\xf8\xd8,\x06\x62ucketB\xaf\x01\xaa\x02\'Google.Events.Protobuf.Cloud.Storage.V1\xca\x02\x1eGoogle\\Events\\Cloud\\Storage\\V1\xea\x02\"Google::Events::Cloud::Storage::V1\xba\xf8\xd8,\rCloud Storage\xc2\xf8\xd8,(\n\x06\x62ucket\x12\x1eThe bucket name being watched.b\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google
