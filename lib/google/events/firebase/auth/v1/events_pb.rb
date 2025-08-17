@@ -10,7 +10,7 @@ require 'google/events/firebase/auth/v1/data_pb'
 
 descriptor_data = "\n+google/events/firebase/auth/v1/events.proto\x12\x1egoogle.events.firebase.auth.v1\x1a\x1egoogle/events/cloudevent.proto\x1a)google/events/firebase/auth/v1/data.proto\"z\n\x10UserCreatedEvent\x12;\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32-.google.events.firebase.auth.v1.AuthEventData:)\xb2\xf8\xd8,$google.firebase.auth.user.v1.created\"z\n\x10UserDeletedEvent\x12;\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32-.google.events.firebase.auth.v1.AuthEventData:)\xb2\xf8\xd8,$google.firebase.auth.user.v1.deletedB\x8c\x01\xaa\x02\'Google.Events.Protobuf.Firebase.Auth.V1\xca\x02\x1eGoogle\\Events\\Firebase\\Auth\\V1\xea\x02\"Google::Events::Firebase::Auth::V1\xba\xf8\xd8,\x17\x46irebase Authenticationb\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

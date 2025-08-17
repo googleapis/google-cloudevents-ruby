@@ -10,7 +10,7 @@ require 'google/events/cloudevent_pb'
 
 descriptor_data = "\n=google/events/cloud/beyondcorp/clientgateways/v1/events.proto\x12\x30google.events.cloud.beyondcorp.clientgateways.v1\x1a;google/events/cloud/beyondcorp/clientgateways/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\xcb\x01\n\x19\x43lientGatewayCreatedEvent\x12V\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32H.google.events.cloud.beyondcorp.clientgateways.v1.ClientGatewayEventData:V\xb2\xf8\xd8,?google.cloud.beyondcorp.clientgateways.clientGateway.v1.created\xca\xf8\xd8,\rclientgateway\"\xcb\x01\n\x19\x43lientGatewayDeletedEvent\x12V\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32H.google.events.cloud.beyondcorp.clientgateways.v1.ClientGatewayEventData:V\xb2\xf8\xd8,?google.cloud.beyondcorp.clientgateways.clientGateway.v1.deleted\xca\xf8\xd8,\rclientgatewayB\x95\x02\xaa\x02\x39Google.Events.Protobuf.Cloud.BeyondCorp.ClientGateways.V1\xca\x02\x30Google\\Events\\Cloud\\BeyondCorp\\ClientGateways\\V1\xea\x02\x35Google::Events::Cloud::BeyondCorp::ClientGateways::V1\xba\xf8\xd8,\nBeyondCorp\xc2\xf8\xd8,Z\n\rclientgateway\x12:The resource ID of the ClientGateway triggering the event.\x1a\rclientGatewayb\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

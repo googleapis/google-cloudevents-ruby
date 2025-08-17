@@ -9,7 +9,7 @@ require 'google/protobuf/timestamp_pb'
 
 descriptor_data = "\n(google/events/cloud/pubsub/v1/data.proto\x12\x1dgoogle.events.cloud.pubsub.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x85\x01\n\x14MessagePublishedData\x12=\n\x07message\x18\x01 \x01(\x0b\x32,.google.events.cloud.pubsub.v1.PubsubMessage\x12\x14\n\x0csubscription\x18\x02 \x01(\t\x12\x18\n\x10\x64\x65livery_attempt\x18\x03 \x01(\x05\"\xfe\x01\n\rPubsubMessage\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12P\n\nattributes\x18\x02 \x03(\x0b\x32<.google.events.cloud.pubsub.v1.PubsubMessage.AttributesEntry\x12\x12\n\nmessage_id\x18\x03 \x01(\t\x12\x30\n\x0cpublish_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x14\n\x0cordering_key\x18\x05 \x01(\t\x1a\x31\n\x0f\x41ttributesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42m\xaa\x02&Google.Events.Protobuf.Cloud.PubSub.V1\xca\x02\x1dGoogle\\Events\\Cloud\\PubSub\\V1\xea\x02!Google::Events::Cloud::PubSub::V1b\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

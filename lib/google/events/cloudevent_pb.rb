@@ -9,7 +9,7 @@ require 'google/protobuf/descriptor_pb'
 
 descriptor_data = "\n\x1egoogle/events/cloudevent.proto\x12\rgoogle.events\x1a google/protobuf/descriptor.proto\"P\n\x12\x45xtensionAttribute\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x17\n\x0f\x63\x61mel_case_name\x18\x03 \x01(\t:<\n\x10\x63loud_event_type\x12\x1f.google.protobuf.MessageOptions\x18\x86\x8f\xcb\x05 \x01(\t:<\n\x13\x63loud_event_product\x12\x1c.google.protobuf.FileOptions\x18\x87\x8f\xcb\x05 \x01(\t:k\n\x1f\x63loud_event_extension_attribute\x12\x1c.google.protobuf.FileOptions\x18\x88\x8f\xcb\x05 \x03(\x0b\x32!.google.events.ExtensionAttribute:F\n\x1a\x63loud_event_extension_name\x12\x1f.google.protobuf.MessageOptions\x18\x89\x8f\xcb\x05 \x03(\tB<P\x01\xaa\x02\x16Google.Events.Protobuf\xca\x02\rGoogle\\Events\xea\x02\x0eGoogle::Eventsb\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google
