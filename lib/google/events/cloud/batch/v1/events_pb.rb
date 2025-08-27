@@ -10,7 +10,7 @@ require 'google/events/cloudevent_pb'
 
 descriptor_data = "\n)google/events/cloud/batch/v1/events.proto\x12\x1cgoogle.events.cloud.batch.v1\x1a\'google/events/cloud/batch/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"{\n\x0fJobCreatedEvent\x12\x38\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32*.google.events.cloud.batch.v1.JobEventData:.\xb2\xf8\xd8,!google.cloud.batch.job.v1.created\xca\xf8\xd8,\x03job\"{\n\x0fJobDeletedEvent\x12\x38\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32*.google.events.cloud.batch.v1.JobEventData:.\xb2\xf8\xd8,!google.cloud.batch.job.v1.deleted\xca\xf8\xd8,\x03jobB\xb0\x01\xaa\x02%Google.Events.Protobuf.Cloud.Batch.V1\xca\x02\x1cGoogle\\Events\\Cloud\\Batch\\V1\xea\x02 Google::Events::Cloud::Batch::V1\xba\xf8\xd8,\x05\x42\x61tch\xc2\xf8\xd8,7\n\x03job\x12\x30The resource ID of the Job triggering the event.b\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

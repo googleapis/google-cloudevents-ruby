@@ -10,7 +10,7 @@ require 'google/events/cloudevent_pb'
 
 descriptor_data = "\n<google/events/cloud/beyondcorp/appconnectors/v1/events.proto\x12/google.events.cloud.beyondcorp.appconnectors.v1\x1a:google/events/cloud/beyondcorp/appconnectors/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\xc5\x01\n\x18\x41ppConnectorCreatedEvent\x12T\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x46.google.events.cloud.beyondcorp.appconnectors.v1.AppConnectorEventData:S\xb2\xf8\xd8,=google.cloud.beyondcorp.appconnectors.appConnector.v1.created\xca\xf8\xd8,\x0c\x61ppconnector\"\xc5\x01\n\x18\x41ppConnectorUpdatedEvent\x12T\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x46.google.events.cloud.beyondcorp.appconnectors.v1.AppConnectorEventData:S\xb2\xf8\xd8,=google.cloud.beyondcorp.appconnectors.appConnector.v1.updated\xca\xf8\xd8,\x0c\x61ppconnector\"\xc5\x01\n\x18\x41ppConnectorDeletedEvent\x12T\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x46.google.events.cloud.beyondcorp.appconnectors.v1.AppConnectorEventData:S\xb2\xf8\xd8,=google.cloud.beyondcorp.appconnectors.appConnector.v1.deleted\xca\xf8\xd8,\x0c\x61ppconnectorB\x8f\x02\xaa\x02\x38Google.Events.Protobuf.Cloud.BeyondCorp.AppConnectors.V1\xca\x02/Google\\Events\\Cloud\\BeyondCorp\\AppConnectors\\V1\xea\x02\x34Google::Events::Cloud::BeyondCorp::AppConnectors::V1\xba\xf8\xd8,\nBeyondCorp\xc2\xf8\xd8,W\n\x0c\x61ppconnector\x12\x39The resource ID of the AppConnector triggering the event.\x1a\x0c\x61ppConnectorb\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

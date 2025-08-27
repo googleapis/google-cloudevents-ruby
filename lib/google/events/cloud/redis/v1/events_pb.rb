@@ -10,7 +10,7 @@ require 'google/events/cloudevent_pb'
 
 descriptor_data = "\n)google/events/cloud/redis/v1/events.proto\x12\x1cgoogle.events.cloud.redis.v1\x1a\'google/events/cloud/redis/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\x8f\x01\n\x14InstanceCreatedEvent\x12=\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32/.google.events.cloud.redis.v1.InstanceEventData:8\xb2\xf8\xd8,&google.cloud.redis.instance.v1.created\xca\xf8\xd8,\x08instance\"\x8f\x01\n\x14InstanceUpdatedEvent\x12=\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32/.google.events.cloud.redis.v1.InstanceEventData:8\xb2\xf8\xd8,&google.cloud.redis.instance.v1.updated\xca\xf8\xd8,\x08instance\"\x8f\x01\n\x14InstanceDeletedEvent\x12=\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32/.google.events.cloud.redis.v1.InstanceEventData:8\xb2\xf8\xd8,&google.cloud.redis.instance.v1.deleted\xca\xf8\xd8,\x08instanceB\xd7\x01\xaa\x02%Google.Events.Protobuf.Cloud.Redis.V1\xca\x02\x1cGoogle\\Events\\Cloud\\Redis\\V1\xea\x02 Google::Events::Cloud::Redis::V1\xba\xf8\xd8,\"Google Cloud Memorystore for Redis\xc2\xf8\xd8,A\n\x08instance\x12\x35The resource ID of the Instance triggering the event.b\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

@@ -10,7 +10,7 @@ require 'google/events/cloudevent_pb'
 
 descriptor_data = "\n1google/events/cloud/dataflow/v1beta3/events.proto\x12$google.events.cloud.dataflow.v1beta3\x1a/google/events/cloud/dataflow/v1beta3/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\x97\x01\n\x15JobStatusChangedEvent\x12@\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x32.google.events.cloud.dataflow.v1beta3.JobEventData:<\xb2\xf8\xd8,/google.cloud.dataflow.job.v1beta3.statusChanged\xca\xf8\xd8,\x03jobB\xc4\x01\xaa\x02-Google.Events.Protobuf.Cloud.Dataflow.V1Beta3\xca\x02$Google\\Events\\Cloud\\Dataflow\\V1beta3\xea\x02(Google::Events::Cloud::Dataflow::V1beta3\xba\xf8\xd8,\x08\x44\x61taflow\xc2\xf8\xd8,0\n\x03job\x12)The name of the Job triggering the event.b\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google
