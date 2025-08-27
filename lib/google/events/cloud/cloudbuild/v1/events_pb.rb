@@ -10,7 +10,7 @@ require 'google/events/cloudevent_pb'
 
 descriptor_data = "\n.google/events/cloud/cloudbuild/v1/events.proto\x12!google.events.cloud.cloudbuild.v1\x1a,google/events/cloud/cloudbuild/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\x87\x01\n\x0f\x43loudBuildEvent\x12?\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x31.google.events.cloud.cloudbuild.v1.BuildEventData:3\xb2\xf8\xd8,.google.cloud.cloudbuild.build.v1.statusChangedB\x89\x01\xaa\x02*Google.Events.Protobuf.Cloud.CloudBuild.V1\xca\x02!Google\\Events\\Cloud\\CloudBuild\\V1\xea\x02%Google::Events::Cloud::CloudBuild::V1\xba\xf8\xd8,\x0b\x43loud Buildb\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

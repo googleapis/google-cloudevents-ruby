@@ -10,7 +10,7 @@ require 'google/events/cloudevent_pb'
 
 descriptor_data = "\n4google/events/cloud/video/transcoder/v1/events.proto\x12\'google.events.cloud.video.transcoder.v1\x1a\x32google/events/cloud/video/transcoder/v1/data.proto\x1a\x1egoogle/events/cloudevent.proto\"\x91\x01\n\x0fJobCreatedEvent\x12\x43\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x35.google.events.cloud.video.transcoder.v1.JobEventData:9\xb2\xf8\xd8,,google.cloud.video.transcoder.job.v1.created\xca\xf8\xd8,\x03job\"\x91\x01\n\x0fJobDeletedEvent\x12\x43\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x35.google.events.cloud.video.transcoder.v1.JobEventData:9\xb2\xf8\xd8,,google.cloud.video.transcoder.job.v1.deleted\xca\xf8\xd8,\x03job\"\xb1\x01\n\x17JobTemplateCreatedEvent\x12K\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32=.google.events.cloud.video.transcoder.v1.JobTemplateEventData:I\xb2\xf8\xd8,4google.cloud.video.transcoder.jobTemplate.v1.created\xca\xf8\xd8,\x0bjobtemplate\"\xb1\x01\n\x17JobTemplateDeletedEvent\x12K\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32=.google.events.cloud.video.transcoder.v1.JobTemplateEventData:I\xb2\xf8\xd8,4google.cloud.video.transcoder.jobTemplate.v1.deleted\xca\xf8\xd8,\x0bjobtemplateB\xb0\x02\xaa\x02\x30Google.Events.Protobuf.Cloud.Video.Transcoder.V1\xca\x02\'Google\\Events\\Cloud\\Video\\Transcoder\\V1\xea\x02,Google::Events::Cloud::Video::Transcoder::V1\xba\xf8\xd8,\nTranscoder\xc2\xf8\xd8,7\n\x03job\x12\x30The resource ID of the Job triggering the event.\xc2\xf8\xd8,T\n\x0bjobtemplate\x12\x38The resource ID of the JobTemplate triggering the event.\x1a\x0bjobTemplateb\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

@@ -10,7 +10,7 @@ require 'google/protobuf/timestamp_pb'
 
 descriptor_data = "\n3google/events/firebase/firebasealerts/v1/data.proto\x12(google.events.firebase.firebasealerts.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x94\x01\n\tAlertData\x12/\n\x0b\x63reate_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12(\n\x07payload\x18\x03 \x01(\x0b\x32\x17.google.protobuf.StructB\x8e\x01\xaa\x02\x31Google.Events.Protobuf.Firebase.FirebaseAlerts.V1\xca\x02(Google\\Events\\Firebase\\FirebaseAlerts\\V1\xea\x02,Google::Events::Firebase::FirebaseAlerts::V1b\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google

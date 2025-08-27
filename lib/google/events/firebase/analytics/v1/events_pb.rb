@@ -10,7 +10,7 @@ require 'google/events/firebase/analytics/v1/data_pb'
 
 descriptor_data = "\n0google/events/firebase/analytics/v1/events.proto\x12#google.events.firebase.analytics.v1\x1a\x1egoogle/events/cloudevent.proto\x1a.google/events/firebase/analytics/v1/data.proto\"\x8e\x01\n\x18\x41nalyticsLogWrittenEvent\x12\x43\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x35.google.events.firebase.analytics.v1.AnalyticsLogData:-\xb2\xf8\xd8,(google.firebase.analytics.log.v1.writtenB\xa1\x01\xaa\x02,Google.Events.Protobuf.Firebase.Analytics.V1\xca\x02#Google\\Events\\Firebase\\Analytics\\V1\xea\x02\'Google::Events::Firebase::Analytics::V1\xba\xf8\xd8,\x1dGoogle Analytics for Firebaseb\x06proto3"
 
-pool = Google::Protobuf::DescriptorPool.generated_pool
+pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Google
