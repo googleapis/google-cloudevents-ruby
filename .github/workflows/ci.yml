@@ -54,7 +54,7 @@ jobs:
           # Add bin to PATH so 'toys' would work
           echo "$GEM_DIR/bin" >> $GITHUB_PATH
       - name: Checkout repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
