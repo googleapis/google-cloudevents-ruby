@@ -19,7 +19,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "google-style", "~> 1.31.0"
-gem "minitest", "~> 5.18"
+gem "minitest", "~> 6.0"
 gem "minitest-focus", "~> 1.3"
 gem "minitest-rg", "~> 5.2"
 gem "redcarpet", "~> 3.6" unless ::RUBY_PLATFORM == "java"
