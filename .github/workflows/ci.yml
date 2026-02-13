@@ -39,12 +39,27 @@ jobs:
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
+      # 1. Setup Environment (Cross-Platform)
+      # We force 'bash' so we can use standard linux syntax on Windows too.
+      - name: Setup Gem Environment
+        shell: bash
+        run: |
+          # Use the safe runner temp dir
+          GEM_DIR="$RUNNER_TEMP/gem_home"
+
+          # Export for future steps
+          echo "GEM_HOME=$GEM_DIR" >> $GITHUB_ENV
+          echo "GEM_PATH=$GEM_DIR" >> $GITHUB_ENV
+
+          # Add bin to PATH so 'toys' would work
+          echo "$GEM_DIR/bin" >> $GITHUB_PATH
+      - name: Checkout repo
+        uses: actions/checkout@v5
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "${{ matrix.ruby }}"
-      - name: Checkout repo
-        uses: actions/checkout@v5
+          bundler-cache: false
       - name: Install dependencies
         run: |
           gem install --no-document toys
