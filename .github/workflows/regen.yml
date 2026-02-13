@@ -14,6 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
+      # Redirect all gem operations to a local, writable folder
+      # Otherwise toys will break
+      GEM_HOME: ${{ github.workspace }}/vendor/bundle
+      GEM_PATH: ${{ github.workspace }}/vendor/bundle
     steps:
       - name: Checkout repo
         uses: actions/checkout@v5
@@ -22,6 +26,8 @@ jobs:
         with:
           ruby-version: "3.4"
           bundler-cache: true
+      - name: Configure Path
+        run: echo "$GEM_HOME/bin" >> $GITHUB_PATH
       - name: Install tools
         run: "gem install --no-document toys"
       - name: execute
