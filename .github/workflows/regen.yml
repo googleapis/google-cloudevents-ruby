@@ -14,20 +14,28 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
-      # Redirect all gem operations to a local, writable folder
-      # Otherwise toys will break
-      GEM_HOME: ${{ github.workspace }}/vendor/bundle
-      GEM_PATH: ${{ github.workspace }}/vendor/bundle
     steps:
+      # 1. Setup Environment (Cross-Platform)
+      # We force 'bash' so we can use standard linux syntax on Windows too.
+      - name: Setup Gem Environment
+        shell: bash
+        run: |
+          # Use the safe runner temp dir
+          GEM_DIR="$RUNNER_TEMP/gem_home"
+
+          # Export for future steps
+          echo "GEM_HOME=$GEM_DIR" >> $GITHUB_ENV
+          echo "GEM_PATH=$GEM_DIR" >> $GITHUB_ENV
+
+          # Add bin to PATH so 'toys' would work
+          echo "$GEM_DIR/bin" >> $GITHUB_PATH
       - name: Checkout repo
         uses: actions/checkout@v5
       - name: Install Ruby 3.4
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.4"
-          bundler-cache: true
-      - name: Configure Path
-        run: echo "$GEM_HOME/bin" >> $GITHUB_PATH
+          bundler-cache: false
       - name: Install tools
         run: "gem install --no-document toys"
       - name: execute
