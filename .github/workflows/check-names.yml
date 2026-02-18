@@ -47,4 +47,6 @@ jobs:
           gem install --no-document toys
       - name: Run CI
         run: |
-          toys check-names -v --github-event-name=${{ github.event_name }} --github-event-payload=${{ github.event_path }} ${{ github.event.inputs.flags }}
+          toys check-names -v --github-event-name=${{ github.event_name }} --github-event-payload=${GITHUB_EVENT_PATH} ${GITHUB_EVENT_INPUTS_FLAGS}
+        env:
+          GITHUB_EVENT_INPUTS_FLAGS: ${{ github.event.inputs.flags }}
