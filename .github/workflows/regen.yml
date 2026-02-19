@@ -40,4 +40,6 @@ jobs:
         run: "gem install --no-document toys"
       - name: execute
         run: |
-          toys regen -v --fork ${{ github.event.inputs.args }}
+          toys regen -v --fork ${GITHUB_EVENT_INPUTS_ARGS}
+        env:
+          GITHUB_EVENT_INPUTS_ARGS: ${{ github.event.inputs.args }}
