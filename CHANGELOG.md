@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.4.0 (2026-07-07)
+
+#### Features
+
+* Ruby 3.2 minimum, 4.0 default ([#101](https://github.com/googleapis/google-cloudevents-ruby/issues/101)) 
+
 ### 1.3.0 (2025-08-27)
 
 #### Features
