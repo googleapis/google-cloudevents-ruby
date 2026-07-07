@@ -16,9 +16,6 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            ruby: "3.1"
-            tasks: "--test-unit"
-          - os: ubuntu-latest
             ruby: "3.2"
             tasks: "--test-unit"
           - os: ubuntu-latest
@@ -27,14 +24,17 @@ jobs:
           - os: ubuntu-latest
             ruby: "3.4"
             tasks: "--test-unit"
+          - os: ubuntu-latest
+            ruby: "4.0"
+            tasks: "--test-unit"
           - os: macos-latest
-            ruby: "3.4"
+            ruby: "4.0"
             tasks: "--test-unit"
           - os: windows-latest
-            ruby: "3.4"
+            ruby: "4.0"
             tasks: "--test-unit"
           - os: ubuntu-latest
-            ruby: "3.4"
+            ruby: "4.0"
             tasks: "--test-rubocop --test-yardoc --test-build"
       fail-fast: false
     runs-on: ${{ matrix.os }}
