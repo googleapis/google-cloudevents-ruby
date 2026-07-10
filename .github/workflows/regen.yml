@@ -1,4 +1,8 @@
 name: Regenerate
+
+permissions:
+  contents: read
+
 on:
   schedule:
     - cron: '23 11 * * 0'
@@ -30,16 +34,18 @@ jobs:
           # Add bin to PATH so 'toys' would work
           echo "$GEM_DIR/bin" >> $GITHUB_PATH
       - name: Checkout repo
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
       - name: Install Ruby 4.0
-        uses: ruby/setup-ruby@9eb537ca036ebaed86729dcb9309076e4c5c3b74 # v1
+        uses: ruby/setup-ruby@0dafeac902942906541bc140009cdbf32665b601 # v1.315.0
         with:
           ruby-version: "4.0"
           bundler-cache: false
       - name: Install tools
         run: "gem install --no-document toys"
       - name: execute
-        run: |
-          toys regen -v --fork ${GITHUB_EVENT_INPUTS_ARGS}
         env:
           GITHUB_EVENT_INPUTS_ARGS: ${{ github.event.inputs.args }}
+        run: |
+          toys regen -v --fork ${GITHUB_EVENT_INPUTS_ARGS}
