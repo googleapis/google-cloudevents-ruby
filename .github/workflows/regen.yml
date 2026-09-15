@@ -40,7 +40,7 @@ jobs:
       - name: Install Ruby 4.0
         uses: ruby/setup-ruby@003a5c4d8d6321bd302e38f6f0ec593f77f06600 # v1.319.0
         with:
-          ruby-version: "4.0"
+          ruby-version: "4.0.7"
           bundler-cache: false
       - name: Install tools
         run: "gem install --no-document toys"
