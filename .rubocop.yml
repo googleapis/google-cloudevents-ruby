@@ -6,6 +6,7 @@ AllCops:
     - "lib/**/*.rb"
     - "Gemfile"
     - "google-events.gemspec"
+    - "Rakefile"
   Exclude:
     - "lib/**/*_pb.rb"
 
