@@ -1,0 +1,264 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+require "json"
+require "rbconfig"
+require_relative "lib/repo_tools"
+
+##
+# Regenerate the event classes from the google-cloudevents protos and,
+# optionally, open a pull request with the changes. Run with plain `ruby`
+# (not `bundle exec`), because it installs grpc-tools on demand. Run
+# `bin/regen --help` for the options.
+#
+class Regen
+  include RepoTools
+
+  COMMIT_MESSAGE = "feat: Automated update of event classes"
+  GOOGLEAPIS_URL = "https://github.com/googleapis/googleapis.git"
+  CLOUDEVENTS_URL = "https://github.com/googleapis/google-cloudevents.git"
+  GRPC_TOOLS_REQUIREMENT = "~> 1.54"
+
+  def initialize argv
+    @clean = true
+    @gen = true
+    @update_source = true
+    @git_remote = nil
+    @enable_fork = false
+    parse_options! option_parser, argv
+  end
+
+  def main
+    Dir.chdir ROOT
+    prepare_changes
+    result = make_changes
+    output_result result
+  end
+
+  private
+
+  def option_parser
+    OptionParser.new do |opts|
+      opts.banner = "Usage: bin/regen [options]\n\nRegenerate the event classes from the google-cloudevents protos.\n\n"
+      opts.on "--[no-]clean", "Clean out old generated files. Default is true." do |value|
+        @clean = value
+      end
+      opts.on "--[no-]gen", "Generate new files. Default is true." do |value|
+        @gen = value
+      end
+      opts.on "--[no-]update-source", "Force a git pull of the source proto cache. Default is true." do |value|
+        @update_source = value
+      end
+      opts.on "--remote=NAME",
+              "The name of the git remote to use as the pull request head. " \
+              "If omitted, does not open a pull request." do |value|
+        @git_remote = value
+      end
+      opts.on "--fork", "Open the pull request from a fork owned by the current GitHub user" do
+        @enable_fork = true
+      end
+    end
+  end
+
+  def prepare_changes
+    git_ensure_identity
+    return unless @enable_fork
+    @git_remote ||= "pull-request-fork"
+    gh_ensure_fork @git_remote
+  end
+
+  def make_changes
+    timestamp = Time.now.utc.strftime "%Y%m%d-%H%M%S"
+    branch_name = "gen/#{timestamp}"
+    return :exists if open_pr_exists? COMMIT_MESSAGE
+    capture_pull_request branch_name do
+      do_clean if @clean
+      do_gen if @gen
+    end
+  end
+
+  def output_result result
+    case result
+    when Integer
+      puts "Opened pull request #{result}"
+    when :unchanged
+      puts "No changes"
+    when :exists
+      puts "Pull request already exists"
+    else
+      puts "Updated code but did not open a pull request"
+    end
+  end
+
+  def open_pr_exists? title
+    content = capture ["gh", "pr", "list", "--search", "\"#{title}\" in:title", "--state=open", "--json=number"]
+    !JSON.parse(content).empty?
+  end
+
+  def do_clean
+    Dir.glob("lib/**/*_pb.rb") { |path| FileUtils.rm path }
+  end
+
+  def do_gen
+    protoc = grpc_tools_protoc
+    googleapis_dir = cached_repo GOOGLEAPIS_URL, update: @update_source
+    proto_dir = File.join cached_repo(CLOUDEVENTS_URL, update: @update_source), "proto"
+    proto_files = Dir.glob "#{proto_dir}/**/*.proto"
+    run [RbConfig.ruby, protoc, "--ruby_out=lib", "-I", proto_dir, "-I", googleapis_dir] + proto_files
+  end
+
+  ##
+  # Activate grpc-tools, installing it first if it is missing, and return the
+  # path to its protoc wrapper.
+  #
+  def grpc_tools_protoc
+    begin
+      gem "grpc-tools", GRPC_TOOLS_REQUIREMENT
+    rescue Gem::LoadError
+      run ["gem", "install", "--no-document", "grpc-tools", "--version", GRPC_TOOLS_REQUIREMENT]
+      Gem::Specification.reset
+      gem "grpc-tools", GRPC_TOOLS_REQUIREMENT
+    end
+    Gem.bin_path "grpc-tools", "grpc_tools_ruby_protoc"
+  end
+
+  ##
+  # Run the block on a new branch. If it changed any files, commit them, push
+  # the branch to the remote and open a pull request, then return to the
+  # original branch. Without a remote, just run the block in place.
+  #
+  # @return [Integer,Symbol] The pull request number, `:unchanged` or
+  #     `:disabled`.
+  #
+  def capture_pull_request branch_name
+    unless @git_remote
+      log_info "Pull request generation disabled"
+      yield
+      return :disabled
+    end
+    log_info "Capturing changes for pull request"
+    abort "Git checkout is not clean" unless git_clean?
+    saved_branch_name = capture(["git", "branch", "--show-current"]).strip
+    run ["git", "switch", "-c", branch_name]
+    yield
+    pr_number = git_clean? ? :unchanged : create_pr(branch_name)
+    run ["git", "switch", saved_branch_name]
+    run ["git", "branch", "-D", branch_name]
+    if pr_number == :unchanged
+      log_info "No files changed; no pull request created"
+    else
+      run ["git", "clean", "-df"]
+      log_info "Finished capture and opened pull request #{pr_number}"
+    end
+    pr_number
+  end
+
+  def create_pr branch_name
+    run ["git", "add", "."]
+    run ["git", "commit", "-m", COMMIT_MESSAGE]
+    without_standard_git_auth do
+      run ["git", "push", "-f", "-u", @git_remote, branch_name]
+    end
+    pr_body = "Auto-created at #{Time.now} using bin/regen."
+    output = capture ["gh", "pr", "create", "--repo", gh_repo_full_name,
+                      "--title", COMMIT_MESSAGE, "--body", pr_body]
+    puts output
+    pr_number = output.split("\n").last.split("/").last
+    # It sometimes takes a while for the new PR to propagate to GitHub's APIs
+    retry_command ["gh", "pr", "view", pr_number, "--repo", gh_repo_full_name, "--json=number"]
+    sleep 5
+    pr_number.to_i
+  end
+
+  def git_clean?
+    capture(["git", "status", "-s"]).strip.empty?
+  end
+
+  def git_ensure_identity
+    return if run(["git", "config", "--get", "user.name"], exit_on_failure: false, out: File::NULL).success? &&
+              run(["git", "config", "--get", "user.email"], exit_on_failure: false, out: File::NULL).success?
+    run ["git", "config", "--local", "user.email", "yoshi-automation@google.com"]
+    run ["git", "config", "--local", "user.name", "Yoshi Automation Bot"]
+  end
+
+  ##
+  # When the remote URL carries credentials, push without the auth header
+  # that actions/checkout may have configured, and restore it afterwards.
+  #
+  def without_standard_git_auth
+    remote_url = capture ["git", "remote", "get-url", @git_remote], err: File::NULL
+    return yield unless remote_url =~ %r{^https://[\w:-]+@github\.com/}
+    header_key = "http.https://github.com/.extraheader"
+    existing_auth = capture(["git", "config", "--local", "--get-all", header_key, "^AUTHORIZATION:"],
+                            exit_on_failure: false).split("\n")
+    run ["git", "config", "--local", "--unset-all", header_key, "^AUTHORIZATION:"] unless existing_auth.empty?
+    begin
+      yield
+    ensure
+      existing_auth.each do |auth|
+        run ["git", "config", "--local", "--add", header_key, auth],
+            log_cmd: ["git", "config", "--local", "--add", header_key, "<redacted>"]
+      end
+    end
+  end
+
+  def gh_ensure_fork remote
+    run ["gh", "repo", "fork", gh_repo_full_name, "--clone=false"]
+    run ["gh", "repo", "sync", gh_fork_full_name]
+    return unless gh_token
+    return if run(["git", "remote", "get-url", remote], exit_on_failure: false, out: File::NULL, err: File::NULL)
+              .success?
+    run ["git", "remote", "add", remote, "https://#{gh_username}:#{gh_token}@github.com/#{gh_fork_full_name}.git"],
+        log_cmd: ["git", "remote", "add", remote, "https://github.com/#{gh_fork_full_name}.git"]
+  end
+
+  def gh_repo_info
+    @gh_repo_info ||= JSON.parse capture(["gh", "repo", "view", "--json=name,owner,url,parent"])
+  end
+
+  def gh_repo_full_name
+    owner = (gh_repo_info["parent"] || gh_repo_info)["owner"]["login"]
+    "#{owner}/#{gh_repo_info['name']}"
+  end
+
+  def gh_fork_full_name
+    "#{gh_username}/#{gh_repo_info['name']}"
+  end
+
+  def gh_username
+    @gh_username ||= JSON.parse(capture(["gh", "api", "/user"]))["login"]
+  end
+
+  def gh_token
+    return @gh_token if defined? @gh_token
+    @gh_token = ENV["GITHUB_TOKEN"] || begin
+      log_info "exec: #{['gh', 'auth', 'status', '-t'].inspect}"
+      output, status = Open3.capture2e "gh", "auth", "status", "-t"
+      output[/Token: (\w+)/, 1] if status.success?
+    end
+  end
+
+  def retry_command cmd, times: 3, delay: 1, max_delay: 5, backoff: 1.5
+    times.times do
+      break if run(cmd, exit_on_failure: false).success?
+      sleep delay
+      delay = [delay * backoff, max_delay].min
+    end
+  end
+end
+
+Regen.new(ARGV).main

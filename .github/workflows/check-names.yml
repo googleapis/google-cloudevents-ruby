@@ -16,7 +16,7 @@ on:
         description: "Commit reference from which to evaluate diffs"
         required: false
       flags:
-        description: "Extra flags to pass to toys check-names"
+        description: "Extra flags to pass to bin/check-names"
         required: false
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
           echo "GEM_HOME=$GEM_DIR" >> $GITHUB_ENV
           echo "GEM_PATH=$GEM_DIR" >> $GITHUB_ENV
 
-          # Add bin to PATH so 'toys' would work
+          # Add bin to PATH so installed gem executables work
           echo "$GEM_DIR/bin" >> $GITHUB_PATH
       - name: Install Ruby 4.0
         uses: ruby/setup-ruby@003a5c4d8d6321bd302e38f6f0ec593f77f06600 # v1.319.0
@@ -47,12 +47,9 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
-      - name: Install dependencies
-        run: |
-          gem install --no-document toys -v '~> 0.22.0'
       - name: Run CI
         env:
           GITHUB_EVENT_NAME: ${{ github.event_name }}
           GITHUB_EVENT_INPUTS_FLAGS: ${{ github.event.inputs.flags }}
         run: |
-          toys check-names -v --github-event-name="$GITHUB_EVENT_NAME" --github-event-payload="${GITHUB_EVENT_PATH}" ${GITHUB_EVENT_INPUTS_FLAGS}
+          ruby bin/check-names -v --github-event-name="$GITHUB_EVENT_NAME" --github-event-payload="${GITHUB_EVENT_PATH}" ${GITHUB_EVENT_INPUTS_FLAGS}
