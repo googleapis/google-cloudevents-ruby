@@ -67,7 +67,7 @@ jobs:
           bundler-cache: false
       - name: Install dependencies
         run: |
-          gem install --no-document toys
+          gem install --no-document toys -v 0.22.0
       - name: Run CI
         run: |
           toys ci -v --only ${{ matrix.tasks }}
