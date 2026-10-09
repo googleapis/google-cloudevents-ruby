@@ -25,3 +25,4 @@ Or install it yourself as:
 ```sh
 gem install google_events
 ```
+
