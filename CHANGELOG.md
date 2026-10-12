@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.5.1 (2026-10-09)
+
+#### Documentation
+
+* Trigger a release to verify the new publishing pipeline ([#120](https://github.com/googleapis/google-cloudevents-ruby/issues/120)) 
+
 ### 1.5.0 (2026-07-07)
 
 #### Features
