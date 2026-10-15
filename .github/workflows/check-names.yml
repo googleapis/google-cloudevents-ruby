@@ -49,7 +49,7 @@ jobs:
           persist-credentials: false
       - name: Install dependencies
         run: |
-          gem install --no-document toys
+          gem install --no-document toys -v '~> 0.22.0'
       - name: Run CI
         env:
           GITHUB_EVENT_NAME: ${{ github.event_name }}

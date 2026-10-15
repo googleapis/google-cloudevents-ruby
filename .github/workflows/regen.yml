@@ -43,7 +43,7 @@ jobs:
           ruby-version: "4.0"
           bundler-cache: false
       - name: Install tools
-        run: "gem install --no-document toys"
+        run: "gem install --no-document toys -v '~> 0.22.0'"
       - name: execute
         env:
           GITHUB_EVENT_INPUTS_ARGS: ${{ github.event.inputs.args }}
