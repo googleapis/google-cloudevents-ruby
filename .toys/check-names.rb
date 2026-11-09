@@ -70,6 +70,8 @@ EXCLUDE_MODULES = [
   /^::Google::Cloud::BeyondCorp::ClientConnectorServices::/,
   # The GAPIC name for cloudbuild is google-cloud-build-v1
   /^::Google::Cloud::CloudBuild::/,
+  # There is no GAPIC for Gemini Cloud Assist
+  /^::Google::Cloud::GeminiCloudAssist::/,
   # The IOT client has been turned down
   /^::Google::Cloud::Iot::/,
   # Ruby (currently) has no GAPIC for storage
