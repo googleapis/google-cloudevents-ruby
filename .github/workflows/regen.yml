@@ -38,7 +38,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install Ruby 4.0
-        uses: ruby/setup-ruby@003a5c4d8d6321bd302e38f6f0ec593f77f06600 # v1.319.0
+        uses: ruby/setup-ruby@7f797815d8adceb1c412e7abefdd1ab4abc47a5f # v1.335.0
         with:
           ruby-version: "4.0"
           bundler-cache: false
