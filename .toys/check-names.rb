@@ -70,6 +70,8 @@ EXCLUDE_MODULES = [
   /^::Google::Cloud::BeyondCorp::ClientConnectorServices::/,
   # The GAPIC name for cloudbuild is google-cloud-build-v1
   /^::Google::Cloud::CloudBuild::/,
+  # There is no GAPIC for Gemini Cloud Assist
+  /^::Google::Cloud::GeminiCloudAssist::/,
   # The IOT client has been turned down
   /^::Google::Cloud::Iot::/,
   # Ruby (currently) has no GAPIC for storage
@@ -102,6 +104,8 @@ def find_files
   ensure_checkout head_ref unless head_ref.nil?
   files = find_changed_files base_ref
   files.delete_if { |file| !file.end_with? "_pb.rb" }
+  # Deleted files have no event namespaces to check
+  files.delete_if { |file| !File.file? file }
   if files.empty?
     logger.info "No files changed."
   else
