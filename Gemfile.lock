@@ -40,7 +40,7 @@ GEM
       rake (~> 13.3)
     google-style (1.32.1)
       rubocop (~> 1.76)
-    googleapis-common-protos-types (1.23.0)
+    googleapis-common-protos-types (1.25.0)
       google-protobuf (~> 4.26)
     json (2.21.2)
     language_server-protocol (3.17.0.6)
@@ -118,7 +118,7 @@ CHECKSUMS
   google-protobuf (4.36.2-x86_64-linux-gnu) sha256=d25a820873e423f1d209ae8c672a4a28b019e2429debd0901d26670a0b4e14db
   google-protobuf (4.36.2-x86_64-linux-musl) sha256=0fa17686c896da96a60a705e56ddc7d4ff56413f52787c655bd4c9fb33ffe14f
   google-style (1.32.1) sha256=715b65a1169761c131f4c08592ea7b6e73f8f8ae7217be110e937e7361f9ec6a
-  googleapis-common-protos-types (1.23.0) sha256=992e740a523794d9fc5f29a504465d8fc737aaa16c930fe7228e3346860faf0a
+  googleapis-common-protos-types (1.25.0) sha256=3eac7998e9e52f506d5a68d944284b8d2f6d65d744ab92a0cdd269198a009d15
   json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
